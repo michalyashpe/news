@@ -3,4 +3,3 @@ feedparser
 openai
 mako
 gunicorn
-sqlite3 
