@@ -10,6 +10,13 @@ from flask import Flask, send_file
 import threading
 import time
 import os
+import logging
+import json
+import pytz
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
@@ -183,29 +190,66 @@ def generate_html(conn):
 def update_news_periodically():
     while True:
         try:
-            print("Updating news...")
+            israel_tz = pytz.timezone('Asia/Jerusalem')
+            current_time = datetime.now(israel_tz).strftime('%d/%m/%Y %H:%M:%S')
+            logger.info(f"Starting news update at {current_time}")
+            
             conn = create_database()
+            logger.info("Database created/connected")
+            
             items = get_feed_items()
+            logger.info(f"Fetched {len(items)} news items")
+            
             save_items(conn, items)
+            logger.info("Saved items to database")
+            
             generate_html(conn)
+            logger.info("Generated HTML file")
+            
             conn.close()
-            time.sleep(30)
+            logger.info("Update completed successfully")
+            
+            # Save last run time
+            with open('last_run.json', 'w', encoding='utf-8') as f:
+                json.dump({'last_run': current_time}, f)
+                
+            time.sleep(30)  # Wait 30 seconds before next update
+            
         except Exception as e:
-            print(f"Error in update: {e}")
-            time.sleep(5)
+            logger.error(f"Error in update: {str(e)}")
+            time.sleep(5)  # Wait 5 seconds if there's an error
 
 @app.route('/')
 def serve_news():
-    return send_file('news.html')
+    try:
+        return send_file('news.html')
+    except Exception as e:
+        logger.error(f"Error serving news.html: {str(e)}")
+        return f"Error: {str(e)}", 500
 
-def main():
-    # Start the background update thread
-    update_thread = threading.Thread(target=update_news_periodically, daemon=True)
-    update_thread.start()
-    
-    # Get port from environment (required for Heroku)
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+@app.route('/status')
+def status():
+    try:
+        with open('last_run.json', 'r') as f:
+            last_run = json.load(f)
+        return {
+            'status': 'running',
+            'last_update': last_run['last_run']
+        }
+    except Exception as e:
+        return {
+            'status': 'error',
+            'error': str(e)
+        }
+
+# Start the background thread when the app starts
+@app.before_first_request
+def start_background_thread():
+    thread = threading.Thread(target=update_news_periodically)
+    thread.daemon = True
+    thread.start()
+    logger.info("Background update thread started")
 
 if __name__ == '__main__':
-    main()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
