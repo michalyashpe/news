@@ -1,6 +1,4 @@
-flask
 feedparser
 openai
 mako
-gunicorn
 pytz
