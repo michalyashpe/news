@@ -1,4 +1,5 @@
 feedparser
 openai
 mako
+gunicorn
 pytz
