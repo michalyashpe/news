@@ -2,4 +2,5 @@ flask
 feedparser
 openai
 mako
-gunicorn 
+gunicorn
+sqlite3 
