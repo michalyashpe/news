@@ -243,7 +243,7 @@ def status():
         }
 
 # Start the background thread when the app starts
-@app.before_first_request
+@app.before_request
 def start_background_thread():
     thread = threading.Thread(target=update_news_periodically)
     thread.daemon = True
