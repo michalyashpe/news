@@ -3,6 +3,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Feed</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
     <style>
         body {
             font-family: "Times New Roman", serif;
@@ -45,7 +47,7 @@
             border-radius: 8px;
             transition: all 0.2s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             gap: 15px;
         }
         .headline-link:hover {
@@ -100,7 +102,7 @@
                 padding-bottom: 8px;
             }
             .item {
-                padding: 15px 0;
+                padding: 0;
             }
             h2 {
                 font-size: 1.1rem;
@@ -116,7 +118,7 @@
                 font-size: 1.75rem;
             }
             .item {
-                padding: 12px 0;
+                padding: 0;
             }
             h2 {
                 font-size: 1rem;

@@ -20,6 +20,9 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Add static file serving
+app.static_folder = 'static'
+
 # Initialize background thread variable
 background_thread = None
 
