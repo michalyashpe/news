@@ -1,6 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Feed</title>
     <style>
         body {
@@ -13,30 +14,46 @@
         }
         h1 {
             text-align: center;
-            font-size: 48px;
+            font-size: 2.5rem;
             border-bottom: 2px solid #000;
             padding-bottom: 10px;
+            margin: 0 0 20px 0;
         }
         .last-updated {
             text-align: center;
-            font-size: 14px;
+            font-size: 0.875rem;
             color: #666;
-            margin-top: -10px;
             margin-bottom: 20px;
         }
         .item {
             border-bottom: 1px solid #ccc;
             padding: 20px 0;
-            column-count: 2;
-            column-gap: 40px;
+            break-inside: avoid;
         }
         h2 {
             margin: 0 0 10px 0;
-            font-size: 24px;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        .source-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .source {
+            font-weight: bold;
+        }
+        .date {
+            direction: ltr;
+            unicode-bidi: bidi-override;
         }
         p {
             line-height: 1.6;
             margin: 0 0 10px 0;
+            font-size: 1rem;
         }
         a {
             color: #444;
@@ -46,1364 +63,2213 @@
         a:hover {
             text-decoration: underline;
         }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2rem;
+                padding-bottom: 8px;
+            }
+            .item {
+                padding: 15px 0;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            .item {
+                padding: 12px 0;
+            }
+            h2 {
+                font-size: 1rem;
+            }
+            p {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>חדשות</h1>
-    <div class="last-updated">עודכן לאחרונה: 22/04/2025 10:59:54</div>
+    <div class="last-updated">עודכן לאחרונה: 22/04/2025 11:04:24</div>
+    <div class="item">
+        <h2>נחשפה גופת האפיפיור, טקסי אבלות ברחבי העולם, בוותיקן מתכנסים לתכנן את הלוויה</h2>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 10:54:40</span>
+        </div>
+        <p><a href="https://www.ynet.co.il/news/article/rksdnp4ygl" target="_blank">קרא עוד</a></p>
+    </div>
     <div class="item">
         <h2>לאחר שנה של שיקום: בת ה-8 שנפצעה אנושות מרסיס במתקפה האיראנית חוזרת לבית</h2>
-        <p>מקור: walla | 2025-04-22 10:50:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 10:50:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743970" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"גילה" שהוא זה שהכרישים תקפו בחדרה: "רואה תמונה שלי שכתוב ש'הלכתי'"</h2>
-        <p>מקור: ynet | 2025-04-22 10:48:29</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 10:48:29</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/rjkd9se1xe" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נכנס לתא השירותים של הקורבן בחוף הילטון, אבל טוען: "רציתי לעזור"</h2>
-        <p>מקור: walla | 2025-04-22 10:43:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 10:43:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743966" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ברכה אחת, צעדים פשוטים: המפגש בין יום כדור הארץ לחודש ניסן</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:42:23</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:42:23</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/judaism/article/17795861" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המשטרה מייחסת ליונתן אוריך גם עבירת שיבוש מהלכי משפט בפרשת קטאר</h2>
-        <p>מקור: haaretz | 2025-04-22 10:41:43</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 10:41:43</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-22/ty-article/00000196-5c54-d653-a196-dddee0940000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שקד ביטון מ"חתונמי": "אני מפחד"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:40:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:40:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/localy/article/17795779" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"קיווינו והתפללנו לנס": נפטרה הילדה בת ה-5 שנפצעה מקריסת שער חשמלי בכפר סבא</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:40:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:40:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17796051" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תכנון וביצוע מושלמים לא עזרו: כתב אישום נגד האחים ששדדו 156 אלף שקלים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:39:59</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:39:59</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/crime/article/17795912" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לאחר הכטב"ם בקיסריה, רונן בר הציב אנשי שב"כ בבור לשיפור ההגנה על נתניהו</h2>
-        <p>מקור: haaretz | 2025-04-22 10:39:37</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 10:39:37</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-22/ty-article/.premium/00000196-5be4-d9fc-adbf-5fefb3550000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>קטארגייט: המשטרה תבקש להאריך את מעצר הבית של אוריך - מחשש לשיבוש חקירה</h2>
-        <p>מקור: walla | 2025-04-22 10:37:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 10:37:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743958" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פסטה ריקוטה לימון ממש (אבל ממש) זריזה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:35:20</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:35:20</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/food/recipes/article/17795218" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>היילי ביבר סובלת: "יש לי ציסטות שחלתיות"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:34:35</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:34:35</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/global/article/17795830" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>החשד החדש נגד אוריך, ובקשת המשטרה להאריך את מעצר הבית שלו</h2>
-        <p>מקור: ynet | 2025-04-22 10:33:22</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 10:33:22</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hyq8bpnkee" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>זיוף מסמכים וגילוי מידע חסוי: למה החקירה נגד קאדים בכירים נמשכת כבר שש שנים?</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:31:49</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:31:49</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/law/article/17795696" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"הקללה של חיי": מחבר ספרי "משחקי הכס" מאכזב קשות את המעריצים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:31:39</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:31:39</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/culture/tv/article/17794947" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בצל פרסום ההקלטות: תביעה נגד ראש החטיבה היהודית בשב"כ</h2>
-        <p>מקור: ynet | 2025-04-22 10:26:02</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 10:26:02</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/bkirniejgx" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח: מפקד בארגון טרור המקורב לחמאס חוסל בלבנון</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:24:44</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:24:44</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/defense/article/17795793" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תיעוד: צה"ל פגע משמעותית במערך הדחפורים של חמאס בעזה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:23:19</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:23:19</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/middle-east/article/17795726" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"תיעד הכל בנייד": כתב אישום יוגש נגד מנכ''ל חברת סייבר בגין עבירות מין חמורות בילדים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:21:15</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:21:15</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/crime/article/17795791" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>👁️ המבט הפסיכופתי: סימן שפת הגוף המסגיר פסיכופת</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:19:04</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:19:04</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/viralai/article/17795187" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"זה מורכב": גל רובין עושה סדר ביחסים עם מודי</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:15:16</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:15:16</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/lifestyle/relationship/article/17795596" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מאיה ורטהיימר: "הייתי בדיכאון אחרי לידה"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:14:32</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:14:32</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/localy/article/17795425" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לא מה שחשבתם: הסכומים מאחורי העלייה של הפועל פתח תקווה לליגת העל</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:12:14</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:12:14</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/israeli-soccer/article/17795011" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>איש הרחוב, הדיפלומט או זה שלא רוצה בתפקיד: המועמדים לרשת את האפיפיור פרנציסקוס</h2>
-        <p>מקור: haaretz | 2025-04-22 10:10:23</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 10:10:23</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-22/ty-article-magazine/.premium/00000196-585d-dbcc-a1d6-ffdd97370000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח: מצב המגעים בין מכבי תל אביב לאלכס טיוס</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:10:20</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:10:20</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/israeli-basketball/article/17795423" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לאחר ההחלטה להארכת החקירה: נתניהו התייצב ליום העדות ה-24</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:07:30</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:07:30</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/law/article/17795541" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"שמעתי את הבת שלי מסבירה לאחיה: 'אל תדאג, אמא עושה לנו כיפת ברזל"</h2>
-        <p>מקור: ynet | 2025-04-22 10:07:12</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 10:07:12</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14337255" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טרגדיה בכפר סבא: מתה מפצעיה בת 5 שנפגעה מקריסת שער חניה חשמלי</h2>
-        <p>מקור: ynet | 2025-04-22 10:06:49</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 10:06:49</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/bjy2pn41ee" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טוויסט בעלילה: שתי תלמידות מהרצליה הודו כי הפיצו תמונות עירום של צוות ביה"ס</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:05:55</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:05:55</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/crime/article/17795539" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>סגנו של טראמפ הצטלם במקום הקדוש לנוצרים ועורר זעם - האם הפר את כללי הוותיקן?</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:04:50</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:04:50</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/travel/tourism-news/article/17795351" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בין מכבי חיפה לבית״ר ירושלים: הפלונטר של ירין לוי</h2>
-        <p>מקור: israel_hayom | 2025-04-22 10:02:43</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 10:02:43</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/israeli-soccer/article/17795160" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בן 40 מפתח תקווה, "חובב כרישים": פרטים על קורבן הטרף והעדויות המזוויעות מהחוף</h2>
-        <p>מקור: walla | 2025-04-22 09:58:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 09:58:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743948" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>והנה זה קורה: אם אתם עובדי מדינה - החודש יורד לכם השכר | כל הפרטים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:57:24</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:57:24</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/business/article/17795406" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>סמוטריץ': כשרונן בר ידבר בקבינט - אני אצא לשירותים</h2>
-        <p>מקור: ynet | 2025-04-22 09:56:20</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 09:56:20</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/syyoihejxe" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הכוכב הגדול של ה-NBA הזכיר נשכחות: "כשהוא בריא, אנחנו יכולים לנצח בכל סדרה"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:54:21</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:54:21</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/world-basketball/article/17795089" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הח"כ של גנץ נגד נבצרות לנתניהו: "יצירת כאוס ודרדור השסע"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:51:36</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:51:36</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/politics/article/17795343" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שיתף מסרים אנטישמיים והשתמש בדמותו של היטלר: היורה מפלורידה נחשף</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:45:45</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:45:45</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/judaism/judaism-news/article/17794966" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ד"ש מהעבר: כך נראה היום דודי בלסר</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:44:38</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:44:38</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/localy/article/17795283" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אסון נחל צפית: ראש המכינה והמדריך נידונו לשבע שנות מאסר</h2>
-        <p>מקור: haaretz | 2025-04-22 09:40:42</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 09:40:42</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-22/ty-article/.premium/00000196-5bf1-d99b-a5ff-dbf75ec30000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אסון נחל צפית: 7 שנות מאסר נגזרו על מנהל המכינה והמנהל החינוכי</h2>
-        <p>מקור: ynet | 2025-04-22 09:39:10</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 09:39:10</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hkqx3qv1gx" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ההשפעה האדירה של חיבוק ודיבור אוהב עם הילד שלכם</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:37:24</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:37:24</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/viralai/article/17795000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"כריש קסאמי": הסיקור בעולם הערבי - וה"שבחים" לטורף ברשתות החברתיות</h2>
-        <p>מקור: ynet | 2025-04-22 09:31:19</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 09:31:19</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hyen2in1gx" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>קניה ווסט בחשיפה שערורייתית: קיים יחסי מין עם בן דודו</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:27:14</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:27:14</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/culture/music/article/17795154" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מבוכה בממשל: התיק של השרה לביטחון המולדת נגנב עם דרכון, אישור כניסה ו-3,000$</h2>
-        <p>מקור: ynet | 2025-04-22 09:24:40</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 09:24:40</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/skntaovyxg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>זינוק במספר הישראלים שמבקרים ביוון - אילו מקומות בלטו במיוחד?</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:22:30</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:22:30</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/travel/tourism-news/article/17795157" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הפקרת שורדי השואה: שליש מוותרים על מזון - אך בתקציב המדינה אין מענה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:22:18</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:22:18</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/welfare/article/17794759" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מלניה טראמפ 2.0: הגברת הראשונה חושפת צד שלא הכרתם</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:20:52</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:20:52</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/lifestyle/family-and-parenting/article/17795103" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המסעדה הישראלית בפריז שהפכה לכשרה - מככבת במדריך מישלן</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:16:01</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:16:01</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/food/food-news/article/17795013" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לראשונה מתחילת המלחמה: האירו חוזר להיסחר בקרבת רמת ה-4.3 שקל</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:10:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:10:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/business/article/17795026" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>יועבר בשידור ישיר: אלו ה-22 שכבר הוכרזו כמשיאי משואות - והרשימה עוד תתארך</h2>
-        <p>מקור: ynet | 2025-04-22 09:09:39</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 09:09:39</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hkjmp9vkle" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הסוף למריבות על המזגן: זו הטמפרטורה המומלצת לקירור החדרים בקיץ</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:08:54</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:08:54</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17795040" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ממשל טראמפ: גופים שיחרימו את ישראל לא יקבלו מימון למחקר רפואי | זו המשמעות</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:02:38</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:02:38</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/usa/article/17794998" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אומת ה-AI? ישראל מובילה בהיבטים מרכזיים של בינה מלאכותית - אך מעמדה מידרדר</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:02:20</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:02:20</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/tech/tech-news/article/17794878" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פרק לקריאה | "שנה שבע" מאת מיכל קרייטלר</h2>
-        <p>מקור: israel_hayom | 2025-04-22 09:00:57</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 09:00:57</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/culture/books/article/17791921" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו: "אני שומר על סודות המדינה" | עדות רה"מ בתיק 1000</h2>
-        <p>מקור: walla | 2025-04-22 09:00:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 09:00:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743928" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>זיכרון גורלי: זה התחום החם במדע אחרי AI</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:59:00</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:59:00</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/viralai/article/17794903" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נחשפה "חברת כוח אדם" של שב"חים בגוש דן: כך עבדה השיטה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:52:07</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:52:07</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/crime/article/17794909" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>האזינו: קרא להילחם בנשק נגד הריסת בתי עבריינים - ונעצר</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:36:22</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:36:22</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/crime/article/17794862" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אסון נחל צפית: 7 שנות מאסר למנהלי המכינה ש-10 מחניכיה נספו בשיטפון</h2>
-        <p>מקור: walla | 2025-04-22 08:35:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 08:35:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743924" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"מנור סולומון שווה יותר מהשאלה בלידס, הוא פנומנלי"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:34:10</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:34:10</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/world-soccer/article/17794855" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הדבר המעניין היחיד על הסדרה הישראלית החדשה היא ההפגנה הפרו-פלשתינית שהפריעה להקרנתה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:33:12</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:33:12</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/culture/tv/article/17794798" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"סכנה ברורה ומיידית": צו סגירה למלון בדרום הארץ</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:28:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:28:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/travel/tourism-news/article/17794860" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>כל החטופים תמורת לפחות 5 שנים של שקט: הצעת המתווכות וסבב המו"מ הקרוב</h2>
-        <p>מקור: ynet | 2025-04-22 08:23:26</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 08:23:26</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hjxm4iv1gx" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נמשכים מאמצי החיפוש אחר הגבר שהותקף ע"י כריש: "הזהרתי אותו שלא ייכנס לים"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:15:11</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:15:11</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17794699" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>קניה ווסט: 'עשיתי את זה עם בן דודי'</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:12:13</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:12:13</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/global/article/17794730" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח ערבי: משלחת ישראלית הגיעה לקהיר לדיון בנוגע להצעת חמאס</h2>
-        <p>מקור: israel_hayom | 2025-04-22 08:12:12</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 08:12:12</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/geopolitics/article/17794755" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לטביה סגרה את התיק נגד פושע מלחמה שהיה מעורב ברצח רבבות יהודים בשואה</h2>
-        <p>מקור: haaretz | 2025-04-22 08:10:19</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 08:10:19</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-22/ty-article/.premium/00000196-5bb1-da35-a1d7-fbf1806a0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"הסכם ג'נטלמני": המאמן שריאל מדריד רוצה למנות קיבל מסר מקבוצתו הנוכחית</h2>
-        <p>מקור: israel_hayom | 2025-04-22 07:58:47</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 07:58:47</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/world-soccer/article/17794723" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תושב בני ברק חשוד שתקף מינית בן 11 בבית כנסת בעיר</h2>
-        <p>מקור: walla | 2025-04-22 07:56:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 07:56:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743919" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"מעשה שמתאים למשטרים דיקטטוריים": ח"כים חרדים נגד בן גביר</h2>
-        <p>מקור: israel_hayom | 2025-04-22 07:51:34</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 07:51:34</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/politics/article/17794678" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עבדה בעבר במשרד הביטחון: הישראלית שמונתה לראש דסק איראן בבית הלבן</h2>
-        <p>מקור: israel_hayom | 2025-04-22 07:44:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 07:44:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/usa/article/17794558" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בכיר לשעבר בשב"כ על תצהיר בר: "יש פה קרב על המשך על עבודת הארגון"</h2>
-        <p>מקור: walla | 2025-04-22 07:40:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 07:40:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743917" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הספורטאים הישראלים המוכשרים חוזרים לשתף פעולה לקראת אולימפיאדת לוס אנג'לס 2028</h2>
-        <p>מקור: israel_hayom | 2025-04-22 07:36:08</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 07:36:08</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/other-sports/article/17794630" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אימה בבית הכנסת בגוש דן: אישום יוגש נגד גבר בגין מעשה מגונה בקטין</h2>
-        <p>מקור: israel_hayom | 2025-04-22 07:35:06</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 07:35:06</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/crime/article/17794628" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תיעודי המתרחצים והמחדל שקדם לתקיפת הכרישים בחדרה: "הזהרתי שלא ייכנס למים"</h2>
-        <p>מקור: ynet | 2025-04-22 07:27:54</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 07:27:54</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/rkpaulvjgg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אינסטגרם משתמשת בבינה מלאכותית לחשיפת בני נוער שמתחזים למבוגרים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 07:06:16</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 07:06:16</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/tech/tech-news/article/17794566" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"זה עניין של גורל": ניצול השואה האחרון ממושב תקומה ששרד גם את הטבח בעוטף</h2>
-        <p>מקור: ynet | 2025-04-22 06:52:33</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 06:52:33</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/sjbqbm4kge" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פעילות גופנית – סוגים, יתרונות והמלצות</h2>
-        <p>מקור: israel_hayom | 2025-04-22 06:48:02</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 06:48:02</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/mumlazim/article/17795543" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>האם החתול שלך בדיכאון? אלה הסימנים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 06:30:27</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 06:30:27</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/tech/research/article/17791651" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"אל לנו לתת לזוועות 7 באוקטובר להקהות את גודל האסון": זהו גזר דינם של הנאשמים המרכזיים באסון נחל צפית</h2>
-        <p>מקור: israel_hayom | 2025-04-22 06:25:04</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 06:25:04</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/law/article/17794472" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מדד הדאו ג'ונס בדרך לאפריל הגרוע ביותר מאז 1932</h2>
-        <p>מקור: israel_hayom | 2025-04-22 06:10:59</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 06:10:59</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/business/article/17794437" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>התחזית: עומס חום כבד ושרב ברוב הארץ, אביך בדרום</h2>
-        <p>מקור: ynet | 2025-04-22 06:08:37</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 06:08:37</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/02xda9923" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שבת ישראלית במצעד החיים: "סמל לניצחון הרוח היהודית"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 06:02:48</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 06:02:48</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17794353" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דור "העדים הנעלמים": בתוך כעשור - מרבית ניצולי השואה יילכו לעולמם</h2>
-        <p>מקור: israel_hayom | 2025-04-22 06:00:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 06:00:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17792657" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו: "לא דרשנו ממילצ'ן מתנות, הוא אדם שאוהב לתת, ככה הוא מבטא את הקשר שלו"</h2>
-        <p>מקור: haaretz | 2025-04-22 06:00:40</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 06:00:40</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-22/ty-article/.premium/00000196-59dc-d99b-a5ff-d9dfd8780000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תיבת פנדורה הנוראית בתולדות ישראל נפתחה, והתוכן שלה מפחיד</h2>
-        <p>מקור: haaretz | 2025-04-22 06:00:38</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 06:00:38</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-22/ty-article/.highlight/00000196-59ae-d653-a196-d9be740f0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>התצהיר של רונן בר הוא שיעור באהבת מולדת</h2>
-        <p>מקור: haaretz | 2025-04-22 06:00:37</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 06:00:37</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-22/ty-article/.premium/00000196-59c6-da35-a1d7-fbe798690000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בחירת האפיפיור הבא תצריך הכרעה בין הגישות של קודמיו, ובין פרוגרס לשמרנות</h2>
-        <p>מקור: haaretz | 2025-04-22 06:00:31</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 06:00:31</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-22/ty-article/.premium/00000196-599e-d9fc-adbf-5dbf628d0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אמו של מתן אנגרסט: "המדינה בגדה בבן שלי. הוא יצא להילחם כדי להגן עליה"</h2>
-        <p>מקור: haaretz | 2025-04-22 06:00:27</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-22 06:00:27</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/kolkore/2025-04-22/ty-article/00000196-5977-da35-a1d7-fbf7e27e0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>סכנה לדמוקרטיה הישראלית: רונן בר נלחם את המלחמה של כולנו</h2>
-        <p>מקור: israel_hayom | 2025-04-22 05:45:13</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 05:45:13</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/geopolitics/article/17729940" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מוכנים לזה? שני גלי שרב לפנינו בימים הקרובים | תחזית מזג האוויר</h2>
-        <p>מקור: israel_hayom | 2025-04-22 05:40:48</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 05:40:48</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/weathern/article/17794368" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מה צה"ל עושה בעזה ואיך תיראה הלחימה בשבועות הקרובים</h2>
-        <p>מקור: ynet | 2025-04-22 05:00:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 05:00:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/theheadline/article/smra7g8pv" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח בלבנון: כטב"מ ישראלי חיסל בכיר בזרוע הצבאית של ג'מאעת אל-אסלאמיה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 04:51:35</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 04:51:35</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/defense/article/17794425" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ההזמנה של הבכיר האיראני לכנס גרעין בארה"ב, הביטול וההסבר: "לא ננהל מו"מ בפומבי"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 04:25:27</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 04:25:27</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/article/17794418" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ביחס לישראל, האפיפיור פרנציסקוס דרדר את הכנסייה</h2>
-        <p>מקור: israel_hayom | 2025-04-22 04:23:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 04:23:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/geopolitics/article/17794100" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ארה"ב: מוסלמי שתקף ופצע יהודי במתקפה אנטישמית בניו יורק הגיע לעסקת טיעון</h2>
-        <p>מקור: israel_hayom | 2025-04-22 03:52:43</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 03:52:43</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/usa/article/17794405" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אחרי הקפאת המיליארדים: הרווארד תובעת את ממשל טראמפ</h2>
-        <p>מקור: ynet | 2025-04-22 03:40:22</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 03:40:22</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hkdgi4vjeg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פוליטיקה בשואה: איך גם במצב הנורא ביותר יהודים לא השכילו להתאחד?</h2>
-        <p>מקור: israel_hayom | 2025-04-22 03:12:20</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 03:12:20</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/judaism/article/17791783" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>התחזית: שרב כבד ברוב אזורי הארץ</h2>
-        <p>מקור: walla | 2025-04-22 03:00:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 03:00:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743903" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>AI יאבחן הפרעות קשב - דרך העיניים</h2>
-        <p>מקור: israel_hayom | 2025-04-22 02:30:50</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 02:30:50</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/tech/research/article/17791379" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בקשתו האחרונה והמפתיעה של האפיפיור פרנציסקוס: "כאן אני רוצה להיקבר"</h2>
-        <p>מקור: israel_hayom | 2025-04-22 02:15:05</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 02:15:05</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/article/17794395" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>התרעה על חדירת מחבלים להתנחלות בשומרון: "רכב פרץ מחסום". מסתמן: הרקע פלילי</h2>
-        <p>מקור: ynet | 2025-04-22 01:52:18</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 01:52:18</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/h1io6xnjeg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הרווארד תובעת את ממשל טראמפ בעקבות האיומים לקצץ במימון</h2>
-        <p>מקור: israel_hayom | 2025-04-22 01:48:48</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 01:48:48</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/usa/article/17794386" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שנמחזר ביחד? כשמודעות סביבתית הופכת למפתח להצלחה רומנטית</h2>
-        <p>מקור: israel_hayom | 2025-04-22 01:13:53</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 01:13:53</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/lifestyle/relationship/article/17790799" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"תשאלו את החות'ים". כך הגיב טראמפ לסערת הצ'אט הסודי של שר ההגנה</h2>
-        <p>מקור: ynet | 2025-04-22 01:09:07</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 01:09:07</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/ryfoqxnkge" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טענות הנאשם בתקיפת אישה וכלבה בפ"ת נדחו: "נהג באלימות. דפוס שחוזר על עצמו"</h2>
-        <p>מקור: walla | 2025-04-22 00:36:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-22 00:36:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743901" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו ישאיר "שער ריק"? ההכרעה שבג"ץ לא יקבל - והסעיפים המפלילים בתצהיר בר</h2>
-        <p>מקור: ynet | 2025-04-22 00:32:52</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:32:52</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/hygz8e4klg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הפלסטינים טוענים: אחרי סירוב חמאס, זו ההצעה החדשה של המתווכות</h2>
-        <p>מקור: ynet | 2025-04-22 00:31:44</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:31:44</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/r1cirfeyxg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>כל אדם אחר היה נפרד מרונן בר מזמן ובצדק</h2>
-        <p>מקור: ynet | 2025-04-22 00:30:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:30:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14342242" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הקרבת החטופים לא תציל איש, ולא תמנע את 7 באוקטובר הבא</h2>
-        <p>מקור: israel_hayom | 2025-04-22 00:21:13</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-22 00:21:13</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17794266" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אין מה לעשות, נתניהו חייב ללכת</h2>
-        <p>מקור: ynet | 2025-04-22 00:21:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:21:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14341733" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עכשיו חשוב מאי פעם שנתניהו ייחקר</h2>
-        <p>מקור: ynet | 2025-04-22 00:17:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:17:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14342090" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תעלה המשואה! לתפארת מדינת הליכוד</h2>
-        <p>מקור: ynet | 2025-04-22 00:15:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:15:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14341726" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מתי ישראל הפסיקה להיות ישראלית?</h2>
-        <p>מקור: ynet | 2025-04-22 00:12:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:12:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14341619" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בר נשכב על הגדר בשביל כולם</h2>
-        <p>מקור: ynet | 2025-04-22 00:11:00</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-22 00:11:00</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/yokra14342579" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נשלל החשש לחדירת מחבלים ליישוב עלי זהב שבשומרון</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:51:48</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:51:48</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/defense/article/17794319" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>משרד החינוך משנה התאמות לתלמידים עם לקויות למידה: "הפיילוט פוגע"</h2>
-        <p>מקור: ynet | 2025-04-21 23:45:45</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-21 23:45:45</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/sy7zwzvkxl" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מה שראיתי במיידנק ולא אשכח לעולם</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:34:08</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:34:08</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/opinions/article/17794282" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל טלה: בסופו של יום - צפויה הצלחה | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/aries/article/17793015" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל שור: אין טעם להתייאש | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/taurus/article/17793026" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל תאומים: בקרוב תהיה לכם סיבה טובה לחגוג | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/gemini/article/17793030" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל סרטן: היום מתחיל בצורה מפתיעה | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/cancer/article/17793032" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל אריה: היכרות עם מישהו חדש צריך לקחת ברצינות | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/leo/article/17793038" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל בתולה: שיקולים רגשיים עלולים להטעות אתכם | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/virgo/article/17793046" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל מאזניים: עדיף להיות נאיבי מאשר לחשוש כול הזמן | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/libra/article/17793049" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל עקרב: כול המכשולים העומדים בדרככם ייעלמו בקרוב | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/scorpio/article/17793050" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל קשת: מנעו מעצמכם התנסויות שיש בהן סיכון | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/sagittarius/article/17793052" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל גדי: המוטיבציה שלכם בשיאה | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/capricorn/article/17793053" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל דלי: הקדישו זמן ומחשבה לעניינים רומנטיים | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/aquarius/article/17793058" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מזל דגים: המפתח ליום זה היא סבלנות | תחזית הורוסקופ ליום שלישי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:30:51</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:30:51</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/horoscopes/pisces/article/17793059" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"היכה קטינים באופן שיטתי בכיתה, בידיים או עם חגורה, שהיו עירומים על פי דרישתו": חיידר הזוועות נחשף</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:23:49</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:23:49</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/law/article/17794153" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח: ימים ספורים לאחר שחמאס דחה את ההצעה - המתווכות הציעו נוסחה חדשה לעסקה</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:17:21</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:17:21</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/geopolitics/article/17794198" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המשנה ליועמ"שית: גיוס חרדים? אין חוק כי הפוליטיקאים לא מצליחים להסכים עליו</h2>
-        <p>מקור: ynet | 2025-04-21 23:14:52</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-21 23:14:52</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/syna6mvkxx" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הולך רגל בן 60 נהרג בתאונת דרכים בחיפה</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:13:45</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:13:45</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17794217" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תאונה קטלנית בחיפה: גבר נהרג מפגיעת רכב</h2>
-        <p>מקור: ynet | 2025-04-21 23:06:04</p>
+        <div class="source-line">
+            <span class="source">מקור: ynet</span>
+            <span class="date">2025-04-21 23:06:04</span>
+        </div>
         <p><a href="https://www.ynet.co.il/news/article/rjbzvxvygg" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"חתונה ממבט ראשון": אחרי פרק ההחלטות, הזוגות פותחים הכל</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:02:50</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:02:50</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/culture/tv/article/17791914" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"חתונמי": איפה אולה ורוני היום?</h2>
-        <p>מקור: israel_hayom | 2025-04-21 23:00:20</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 23:00:20</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/localy/article/17792919" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הצל תוקף את יונה יהב: "ביטל הופעה שלי עם סאבלימינל - בגלל דעותיי"</h2>
-        <p>מקור: israel_hayom | 2025-04-21 22:59:24</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 22:59:24</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/culture/music/article/17794157" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בואו נדבר רגע על ביבי</h2>
-        <p>מקור: israel_hayom | 2025-04-21 22:39:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 22:39:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/opinions/article/17793597" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
-        <h2>פרשים פינו בכוח מפגינים בת"א; אב החלל החטוף: "סמוטריץ' משתין עלינו מהמקפצה"</h2>
-        <p>מקור: ynet | 2025-04-21 22:36:35</p>
-        <p><a href="https://www.ynet.co.il/news/article/rjlebm4klg" target="_blank">קרא עוד</a></p>
-    </div>
-    <div class="item">
         <h2>מפחיד: מטוס עלה באש - הנוסעים פונו לפני ההמראה</h2>
-        <p>מקור: israel_hayom | 2025-04-21 22:36:33</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 22:36:33</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/travel/tourism-news/article/17794011" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עזתים קיבלו הודעות שמציעות סיוע ביציאה מהרצועה; חמאס: זה קמפיין ישראלי</h2>
-        <p>מקור: haaretz | 2025-04-21 21:49:22</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 21:49:22</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-599e-d99b-a5ff-d9df4c1f0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"התנהלות מבישה": עיריית בני ברק במתקפה חריפה על איתמר בן גביר</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:44:40</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:44:40</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/judaism/judaism-news/article/17793834" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>רוכב טרקטורון חשמלי נפצע קשה בתאונה בקרית גת</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:41:58</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:41:58</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17793874" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"ניסיון לפוליטיזציה"; "זה מסוכן": עורכי הדין והשופטים בדימוס מגיבים לתצהיר רונן בר</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:29:16</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:29:16</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/law/article/17793824" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>רשמית: מנור סולומון ולידס עלו לפרמייר ליג</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:27:11</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:27:11</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/sport/world-soccer/article/17792582" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המחאה מחריפה - יאיר גולן בכיכר הבימה: "האיש שמחזיק במושכות השלטון הוא האיום הכי גדול על קיומנו"</h2>
-        <p>מקור: walla | 2025-04-21 21:22:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 21:22:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743870" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>השוטרים מצאו אופניים ותיק: חיפושים לתוך הלילה אחרי הנעדר שהותקף על ידי כריש</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:20:31</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:20:31</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17793708" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הפגנה נגד נתניהו בעקבות התצהיר של רונן בר: "נחצו כל הקווים האדומים"</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:16:41</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:16:41</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17793614" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח: ממשל טראמפ מחפש מחליף למזכיר ההגנה | הבית הלבן: ״פייק ניוז״</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:10:10</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:10:10</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/world-news/usa/article/17793717" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווח בארה"ב: בממשל טראמפ החלו לחפש מחליף לשר ההגנה פיט הגסת</h2>
-        <p>מקור: haaretz | 2025-04-21 21:10:06</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 21:10:06</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-21/ty-article/.premium/00000196-5963-da35-a1d7-fbe3eff70000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שניר בורגיל מודיע: "נשמור על החברות שלנו"</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:05:29</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:05:29</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/localy/article/17793562" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"חלוקה לא צודקת": בתנועת עתיד לעוטף מזהירים מפני הצעד החדש של הממשלה</h2>
-        <p>מקור: israel_hayom | 2025-04-21 21:04:56</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2025-04-21 21:04:56</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/news/local/article/17793195" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בחיל האוויר התחילו לקיים שיחות הדחה עם חותמי המכתב נגד המלחמה</h2>
-        <p>מקור: haaretz | 2025-04-21 20:51:27</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 20:51:27</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5961-d653-a196-d9fb87fc0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>סיור ברפיח מגלה כי למרות מאמצי השיווק, הלחימה היא עוד מאותו הדבר</h2>
-        <p>מקור: haaretz | 2025-04-21 20:13:00</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 20:13:00</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5942-d99b-a5ff-d9d7c8630000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תחזית מזג האוויר ליום שלישי: שרבי</h2>
-        <p>מקור: haaretz | 2025-04-21 19:49:41</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 19:49:41</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/weather/2025-04-21/ty-article/00000196-585a-d0f1-abf6-7c7a589d0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פרנציסקוס הוא האפיפיור שהלך הכי רחוק בכיוון הליברלי, אבל באופן שמרני</h2>
-        <p>מקור: haaretz | 2025-04-21 19:37:06</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 19:37:06</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/magazine/2025-04-21/ty-article-magazine/.premium/00000196-583f-d9fc-adbf-5c3fa33e0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו מצטייר כדמות מבהילה. הוא ממוקד בפירוק הדמוקרטיה לתועלתו ולא ניתן לבטוח בשיקוליו</h2>
-        <p>מקור: haaretz | 2025-04-21 19:30:55</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 19:30:55</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.highlight/00000196-58df-d653-a196-d9df9efa0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בן גביר נחת בארה"ב; יבקר באתר הנופש של טראמפ וייפגש עם פילנתרופים יהודים</h2>
-        <p>מקור: haaretz | 2025-04-21 19:16:36</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 19:16:36</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5862-d9fc-adbf-5c6bdc260000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המשטרה תבקש מחר מבית המשפט להאריך את מעצר הבית של יונתן אוריך</h2>
-        <p>מקור: walla | 2025-04-21 18:55:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 18:55:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743851" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תל אביב: תקיפה בגלל תאונה קלה בכביש | תיעוד</h2>
-        <p>מקור: walla | 2025-04-21 18:54:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 18:54:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743852" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המתלוננת נגד ראש עיריית חריש לוואלה: "פשוט קפאתי ולא ידעתי איך להתמודד"</h2>
-        <p>מקור: walla | 2025-04-21 18:50:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 18:50:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743847" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פונתה מביתה ושכלה את בנה: "יש עצב שאמיתי לא רואה שאשיא משואה, הוא היה גאה בי"</h2>
-        <p>מקור: walla | 2025-04-21 17:57:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 17:57:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743848" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לשכת רה"מ: התצהיר של רונן בר רצוף שקרים וחושף את כשליו</h2>
-        <p>מקור: walla | 2025-04-21 17:33:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 17:33:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743835" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הסתדרות המורים הודיעה על שיבוש הלימודים בארבע ערים ביום ראשון</h2>
-        <p>מקור: haaretz | 2025-04-21 17:07:39</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 17:07:39</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/education/2025-04-21/ty-article/.highlight/00000196-5895-da35-a1d7-fbf56ca50000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אלי שרעבי, ששוחרר לאחר 491 יום בשבי חמאס, ישיא משואה ביום העצמאות</h2>
-        <p>מקור: haaretz | 2025-04-21 17:00:20</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 17:00:20</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politi/2025-04-21/ty-article/.premium/00000196-5899-d99b-a5ff-d8df438e0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אלי שרעבי, רחל מאופקים, והצעיר ביותר שנבחר עד היום: אלו משיאי המשואות</h2>
-        <p>מקור: walla | 2025-04-21 16:26:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 16:26:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743827" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המשטרה בעניין התקרית בראשל"צ בה נהגת תקפה שוטר: "הנהגת נעצרה לחקירה ובסיומה נכלאה"</h2>
-        <p>מקור: walla | 2025-04-21 16:00:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 16:00:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743807" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לתצהיר של רונן בר יש שורה תחתונה אחת: אין מנוס מהוצאתו של נתניהו לנבצרות</h2>
-        <p>מקור: haaretz | 2025-04-21 15:59:40</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 15:59:40</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.highlight/00000196-583d-d99b-a5ff-d8ff8d3a0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מלחמת הקרקעות בניגריה ממשיכה לגבות מחיר: עשרות נהרגו בתקיפת חמושים, ככל הנראה רועי בקר מוסלמים</h2>
-        <p>מקור: haaretz | 2025-04-21 15:35:17</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 15:35:17</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/africa/2025-04-21/ty-article/.premium/00000196-574a-dbcc-a1d6-ffcbccc90000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אימה בחדרה: גבר הותקף על-ידי כריש; הסריקות אחריו יתחדשו מחר</h2>
-        <p>מקור: walla | 2025-04-21 15:23:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 15:23:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743798" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>החלטה אחת של טראמפ שינתה את חייהם של תושבי הג'ונגל הזה</h2>
-        <p>מקור: haaretz | 2025-04-21 15:14:58</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 15:14:58</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-21/ty-article-magazine/.premium/00000196-5320-d1c7-a3b7-5fe2aa560000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תושבים מדווחים: סדרת הדי פיצוצים במרכז הארץ</h2>
-        <p>מקור: walla | 2025-04-21 14:32:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 14:32:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743779" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ראש שב"כ על חקירת הקשר בין לשכת רה"מ לקטאר: חשד כבד לפגיעה חמורה בביטחון המדינה</h2>
-        <p>מקור: haaretz | 2025-04-21 14:23:15</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 14:23:15</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-57f7-d0f1-abf6-77ffdee20000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ישראל אסרה את כניסתה של משלחת צרפתית שהוזמנה מטעם הקונסוליה בירושלים</h2>
-        <p>מקור: haaretz | 2025-04-21 14:10:21</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 14:10:21</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5766-da35-a1d7-ffe757410000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אזהרה של המטה לביטחון לאומי לשוהים בחו"ל: צפוי "יום זעם עולמי" נגד ישראל</h2>
-        <p>מקור: walla | 2025-04-21 14:09:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 14:09:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743771" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עד שייצא עשן לבן: האפיפיור פרנציסקוס מת – כך יבחרו את יורשו</h2>
-        <p>מקור: haaretz | 2025-04-21 13:34:02</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 13:34:02</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-21/ty-article-magazine/.premium/00000195-3d4f-d852-a5df-ffef1cfd0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו מגיב לתצהיר הדרמטי של ראש שב"כ: "תצהיר שקר, שיופרך בקרוב"</h2>
-        <p>מקור: walla | 2025-04-21 13:31:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 13:31:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743757" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>רונן בר: נתניהו ביקש לדבר איתי בלי שהשיחות יתועדו; נדרשתי לציית לו ולא לבג"ץ</h2>
-        <p>מקור: haaretz | 2025-04-21 11:57:42</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 11:57:42</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-21/ty-article/.premium/00000196-56cf-dbcc-a1d6-ffcfeda80000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בנימין נתניהו לחוקרים: "אלי פלדשטיין הוא כלום"</h2>
-        <p>מקור: walla | 2025-04-21 11:25:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 11:25:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743715" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אבל בעולם הנוצרי: האפיפיור פרנציסקוס מת בגיל 88</h2>
-        <p>מקור: haaretz | 2025-04-21 10:57:42</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 10:57:42</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-21/ty-article-magazine/.premium/00000187-5a96-dcdb-a9af-dabfa4ce0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לשכת רה"מ העבירה לרונן בר חוות דעת שנועדה למנוע מנתניהו להעיד, ודרשה ממנו לחתום</h2>
-        <p>מקור: haaretz | 2025-04-21 10:51:58</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 10:51:58</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-21/ty-article/.highlight/00000196-5719-dbcc-a1d6-ffd9da0c0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>יו"ר מחוז ת"א בלשכת עורכי הדין - ממנה ראש ועדת אתיקה המקורב אליו</h2>
-        <p>מקור: walla | 2025-04-21 10:27:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 10:27:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743702" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>סמוטריץ': צריך להגיד את האמת – החזרת החטופים זו לא המטרה הכי חשובה</h2>
-        <p>מקור: haaretz | 2025-04-21 10:13:14</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 10:13:14</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5721-d99b-a5ff-dff78fb90000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>למה אוחנה שותק? מדליק המשואה כינה הומוסקסואליות "מחלת נפש", יו"ר הכנסת - הומו מוצהר - לא מגיב</h2>
-        <p>מקור: walla | 2025-04-21 10:11:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 10:11:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743698" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לאחר ארבע שנות מאבק, המדינה העניקה מעמד ארעי לחמש משפחות מקהילת העבריים</h2>
-        <p>מקור: haaretz | 2025-04-21 10:04:14</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 10:04:14</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/education/2025-04-21/ty-article/00000196-56d6-d0f1-abf6-76fe473c0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בן 24 מטירה נורה למוות בדרכו לעבודה; מקורות: הרקע הוא סכסוך בין משפחות</h2>
-        <p>מקור: haaretz | 2025-04-21 09:36:16</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 09:36:16</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-21/ty-article/.premium/00000196-56ef-d0f1-abf6-76effeb60000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו: "זה שיבוש של הליכי משפט, נעשה לי עוול" | עדות תיק 1000</h2>
-        <p>מקור: walla | 2025-04-21 09:29:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 09:29:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743682" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נהגו של בן גביר הואשם בנהיגה בקלות דעת, הסניגורית ביקשה לבטל את כתב האישום</h2>
-        <p>מקור: walla | 2025-04-21 08:29:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 08:29:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743661" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>לילה מדמם: הרוג ו-4 פצועים באירועי אלימות במרכז, טרם נעצרו חשודים</h2>
-        <p>מקור: walla | 2025-04-21 08:20:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 08:20:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743659" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מיקה לרנר חיים בת ה-24 היא ההרוגה בתאונת הדרכים בצפון</h2>
-        <p>מקור: walla | 2025-04-21 07:53:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 07:53:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743654" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ראש העיר חריש, יצחק קשת, נעצר בחשד לעבירות מין, שיבוש הליכי חקירה והפרת אמונים</h2>
-        <p>מקור: haaretz | 2025-04-21 07:14:21</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 07:14:21</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-21/ty-article/.premium/00000196-5685-d99b-a5ff-ded721020000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ראש עיריית חריש נעצר בחשד לעבירות מין חמורות</h2>
-        <p>מקור: walla | 2025-04-21 06:09:00</p>
+        <div class="source-line">
+            <span class="source">מקור: walla</span>
+            <span class="date">2025-04-21 06:09:00</span>
+        </div>
         <p><a href="https://news.walla.co.il/item/3743643" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נשיא לבנון שואף לפרק את חיזבאללה מנשק ולצרפו לצבא, אך נראה שמצפה לו עימות</h2>
-        <p>מקור: haaretz | 2025-04-21 06:02:03</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:02:03</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.highlight/00000196-543b-d99b-a5ff-dcffa0d70000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"השופטים מגלים חוסר רגישות דיגיטלי": למרות ריבוי צווי איסור הפרסום, המידע מתפשט</h2>
-        <p>מקור: haaretz | 2025-04-21 06:02:01</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:02:01</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5416-d056-a7f7-f657f0b10000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המלחמה בעזה מתנהלת מאחורי מסך ערפל. הרג הפרמדיקים סיפק צוהר לאמת</h2>
-        <p>מקור: haaretz | 2025-04-21 06:01:07</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:01:07</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-543a-d9fc-adbf-5c3b5aad0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עם חידוש הלחימה, צה"ל הפסיק להגדיר אזורים הומניטריים ברצועת עזה</h2>
-        <p>מקור: haaretz | 2025-04-21 06:01:05</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:01:05</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.premium/00000196-5446-d9fc-adbf-5c6f56cf0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עיריית ירושלים מימנה במיליוני שקלים אירועים לתלמידי ישיבות ולמשפחות חרדיות</h2>
-        <p>מקור: haaretz | 2025-04-21 06:01:04</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:01:04</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politi/2025-04-21/ty-article/.premium/00000196-542b-de6e-a597-7cfb3cac0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ראשת מועצת אשכול: כל אחד צריך לבחון מהי תמונת הניצחון שלו - שחרור חטופים או בניינים מופצצים</h2>
-        <p>מקור: haaretz | 2025-04-21 06:01:02</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:01:02</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/kolkore/2025-04-21/ty-article/00000196-51cb-d3f4-adf7-73cbbd4f0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נתניהו מנסה לפתות את בר לוותר על התצהיר, אך יש חשיבות ציבורית שדבריו יישמעו</h2>
-        <p>מקור: haaretz | 2025-04-21 06:00:38</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 06:00:38</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-21/ty-article/.highlight/00000196-54ce-de6e-a597-7cfe63810000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שר ההגנה האמריקאי שיתף תוכניות תקיפה בתימן בצ'אט הכולל את אשתו, אחיו ועורך דינו</h2>
-        <p>מקור: haaretz | 2025-04-21 03:01:01</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-21 03:01:01</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-21/ty-article/.premium/00000196-556f-d0f1-abf6-756f85db0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מלחמת האזרחים ומשטר אסד כבר אינם, אך המוקשים שהותירו באדמת סוריה עדיין הורגים</h2>
-        <p>מקור: haaretz | 2025-04-20 22:52:43</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 22:52:43</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-20/ty-article-magazine/.premium/00000196-53b3-d1c7-a3b7-5ff318ec0002" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>החגים הסתיימו, והמוטיבציה של חמאס וישראל לקדם עסקה הולכת ונחלשת</h2>
-        <p>מקור: haaretz | 2025-04-20 22:39:54</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 22:39:54</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-547e-d99b-a5ff-dcff5ae80000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בן שפירו, אמילי דמארי ואורן סמדג'ה ישיאו משואה ביום העצמאות</h2>
-        <p>מקור: haaretz | 2025-04-20 21:12:38</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 21:12:38</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politi/2025-04-20/ty-article/.premium/00000196-542e-d99b-a5ff-dcff7b200000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>רוסיה אינה חלק מהמו"מ, אך עשויה להשיג לעצמה תפקיד מרכזי בהסכם בין איראן לארה"ב</h2>
-        <p>מקור: haaretz | 2025-04-20 20:05:13</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 20:05:13</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-20/ty-article/.premium/00000196-53b8-de6e-a597-7ff8cdae0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המשטרה למארגני הפגנה נגד המלחמה: אין להניף "תמונות של ילדים או תינוקות מעזה"</h2>
-        <p>מקור: haaretz | 2025-04-20 19:54:45</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 19:54:45</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-53b5-d056-a7f7-f7f722b40000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הפרקליטות גיבשה טיוטות אישום נגד 22 מחבלי נוחבה, אך הממשלה טרם החליטה כיצד לנהל את ההליך</h2>
-        <p>מקור: haaretz | 2025-04-20 17:44:10</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 17:44:10</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-529c-d9fc-adbf-5ebf1fb80000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בג"ץ קיבל חלקית את בקשת רונן בר לארכה בהגשת התצהיר נגד הדחתו</h2>
-        <p>מקור: haaretz | 2025-04-20 17:42:37</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 17:42:37</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-539a-de6e-a597-7ffa4b920000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מנהיג מפלגת קואליציה בהולנד הודיע על פרישה: אני שחוק נפשית, המחיר גבוה מדי</h2>
-        <p>מקור: haaretz | 2025-04-20 16:55:00</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 16:55:00</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-20/ty-article/.premium/00000196-533b-d1c7-a3b7-5ffbfac50000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ממשל טראמפ מגבש מהפך במשרד החוץ של ארה"ב, כולל ביטול רוב פעילותו באפריקה וסגירת שגרירויות</h2>
-        <p>מקור: haaretz | 2025-04-20 16:24:45</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 16:24:45</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-20/ty-article/.premium/00000196-5338-d1c7-a3b7-5ffaea080000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תחקיר צה"ל: עובדי הסיוע ברפיח לא הוצאו להורג, אך הכוח פעל באופן שגוי ושיקר</h2>
-        <p>מקור: haaretz | 2025-04-20 16:00:21</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 16:00:21</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-43f7-dd47-ad9f-c3ff98310000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פוטין הכריז על הפסקת אש בפסחא, אבל זלנסקי טוען: רוסיה מעמידה פנים ומוסיפה להפציץ את אוקראינה</h2>
-        <p>מקור: haaretz | 2025-04-20 13:25:30</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 13:25:30</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-20/ty-article/.premium/00000196-5297-d99b-a5ff-dad7f6d80000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>נפתלי בנט אושפז בבית חולים לאחר שחש ברע, ועבר צנתור</h2>
-        <p>מקור: haaretz | 2025-04-20 11:53:38</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 11:53:38</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/00000196-5261-d9fc-adbf-5e6b74cb0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אלפים מחו ברחבי ארה"ב נגד טראמפ וממשלו: "הפשיסטים באים, אנו הולכים לכיוון מחנות ריכוז"</h2>
-        <p>מקור: haaretz | 2025-04-20 11:53:12</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 11:53:12</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-20/ty-article-magazine/.premium/00000196-521a-dca4-a3de-52da49be0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מעבר לגדר, קרובי חטופים זעקו ליקיריהם מהמקום הכי קרוב שאפשר</h2>
-        <p>מקור: haaretz | 2025-04-20 11:43:31</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 11:43:31</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-5225-d3f4-adf7-73e58ed10000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>כץ מנע סיור של ראש הממשלה הפלסטיני בכפרים בגדה, בניגוד לעמדת צה"ל</h2>
-        <p>מקור: haaretz | 2025-04-20 11:17:55</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 11:17:55</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/00000196-5184-dca4-a3de-53d497500000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>האופטימיות בשיחות הגרעין עם איראן אינה מספיקה כדי להתקדם להסכם, השטן מצוי בפרטים</h2>
-        <p>מקור: haaretz | 2025-04-20 06:01:03</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 06:01:03</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-20/ty-article/.premium/00000196-4f6a-ddef-a5df-dffb1c4c0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"הייתי מוכנה גם לבלות לילה במעצר. מאז 7 באוקטובר כבר לא אכפת לי"</h2>
-        <p>מקור: haaretz | 2025-04-20 06:01:01</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 06:01:01</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/kolkore/2025-04-20/ty-article/00000196-4d0c-ddef-a5df-dfff05cd0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ראש שב"כ רונן בר יגיש לבג"ץ תצהיר נגד הדחתו, שצפוי לכלול מידע ביטחוני חסוי</h2>
-        <p>מקור: haaretz | 2025-04-20 06:00:37</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 06:00:37</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-20/ty-article/.premium/00000196-4e64-d352-a9d7-4f6e245d0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"מייצרים מציאות של ריבונות": הממשלה מקדמת סיפוח בגדה, וכל האמצעים כשרים</h2>
-        <p>מקור: haaretz | 2025-04-20 06:00:35</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-20 06:00:35</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/magazine/2025-04-20/ty-article-magazine/.premium/00000196-42b5-d587-abb7-eab70d060000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מאיר ניצן, ראש העיר ראשון לציון לשעבר, מת בגיל 93</h2>
-        <p>מקור: haaretz | 2025-04-19 23:54:00</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 23:54:00</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/education/2025-04-19/ty-article/00000196-4fba-d513-adb7-4ffa35a90000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הרב מאיר נסים מאזוז, מבכירי הרבנים הספרדיים, מת בגיל 80</h2>
-        <p>מקור: haaretz | 2025-04-19 22:50:39</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 22:50:39</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/education/2025-04-19/ty-article/00000196-4f97-ddef-a5df-dfff16fb0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הגרסה של אל סלבדור לסיביר: זה המגה כלא שבו נמקים מגורשי ממשל טראמפ</h2>
-        <p>מקור: haaretz | 2025-04-19 22:44:07</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 22:44:07</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-19/ty-article-magazine/.premium/00000196-4f25-ddef-a5df-dfff92b00000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פלדשטיין: טענות דובר רה"מ לפיהן לא עבדתי בלשכת נתניהו בחודשים האחרונים שקריות</h2>
-        <p>מקור: haaretz | 2025-04-19 22:36:43</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 22:36:43</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/netanyahutrial/2025-04-19/ty-article/00000196-4f64-dd47-ad9f-cffde5130000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מקורות רפואיים ברצועה: לפחות 50 נהרגו היום בתקיפות צה"ל, כמה מהם במחנה עקורים</h2>
-        <p>מקור: haaretz | 2025-04-19 21:30:21</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 21:30:21</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-19/ty-article/00000196-4ecd-d513-adb7-4fcf40030000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דוברו של נתניהו: לא ניתן להשיב את כל החטופים בעסקה אחת כי חמאס דורש שנפסיק את המלחמה</h2>
-        <p>מקור: haaretz | 2025-04-19 21:02:35</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 21:02:35</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-19/ty-article/00000196-4f09-d513-adb7-4f4b32ee0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>רס"ב גאלב סלימאן אל נסאסרה, בן 35 מרהט, נהרג בפיצוץ מטען בצפון הרצועה</h2>
-        <p>מקור: haaretz | 2025-04-19 20:43:41</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 20:43:41</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-19/ty-article/00000196-4dfb-dd47-ad9f-cffb53c30000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אנשי אופוזיציה ומתנגדי משטר בתוניסיה נידונו ל-13 עד 66 שנות מאסר בגין קשירת קשר להפיל את השלטון</h2>
-        <p>מקור: haaretz | 2025-04-19 19:05:23</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 19:05:23</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-19/ty-article/.premium/00000196-4e97-d513-adb7-4fdfe1830000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אלפים הפגינו למען שחרור החטופים ברחבי הארץ</h2>
-        <p>מקור: haaretz | 2025-04-19 18:07:35</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 18:07:35</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-19/ty-article/.premium/00000196-4e72-dd47-ad9f-cefb7e9e0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אלקנה בוחבוט פונה לאחיו בסרטון שפרסם חמאס: "תתחנן בפני טראמפ שיוציא אותי מכאן"</h2>
-        <p>מקור: haaretz | 2025-04-19 17:32:54</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 17:32:54</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-19/ty-article/.premium/00000196-4e65-d9fb-a79f-6ee52aa60000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תחזית מזג האוויר ליום ראשון: ירידה קלה בטמפרטורות</h2>
-        <p>מקור: haaretz | 2025-04-19 17:21:24</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 17:21:24</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/weather/2025-04-19/ty-article/00000196-4df4-d513-adb7-4dfe503d0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טראמפ: אם לא יושג בקרוב מאוד הסדר באוקראינה, נוותר על התיווך ונעבור הלאה</h2>
-        <p>מקור: haaretz | 2025-04-19 16:40:11</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 16:40:11</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-19/ty-article/.premium/00000196-4e2a-ddef-a5df-dffb736b0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>העליון בארה"ב אסר על ממשל טראמפ לגרש אזרחי ונצואלה באמצעות חוק מהמאה ה-18</h2>
-        <p>מקור: haaretz | 2025-04-19 14:42:40</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 14:42:40</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-19/ty-article/.premium/00000196-4d9a-d9fb-a79f-6fda61930000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תמונות השבוע של צלמי "הארץ"</h2>
-        <p>מקור: haaretz | 2025-04-19 14:28:30</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 14:28:30</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/picoftheday/2025-04-19/ty-article-magazine/00000196-4ce0-d9fb-a79f-6ee087860000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הסתיים הסבב השני של שיחות המו"מ להסכם גרעין בין ארה"ב לאיראן; מקור בממשל: הושגה התקדמות</h2>
-        <p>מקור: haaretz | 2025-04-19 12:50:31</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 12:50:31</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-19/ty-article/.premium/00000196-4d6c-d352-a9d7-4f6e73f30000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מקורות בממשל טראמפ: מכתב הדרישות שחולל את העימות נשלח להרווארד בטעות</h2>
-        <p>מקור: haaretz | 2025-04-19 11:12:32</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 11:12:32</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-19/ty-article/.premium/00000196-4cd5-d352-a9d7-4fff4f860000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מקורות המעורים בפרטים: בישראל לא שוללים תקיפה באיראן, למרות סירובו של טראמפ לתמוך במהלך</h2>
-        <p>מקור: haaretz | 2025-04-19 09:03:49</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 09:03:49</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-19/ty-article/.premium/00000196-4c5c-dd47-ad9f-cedd168a0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בן דנציג, שאביו ודודו נרצחו בשבי: "הפכתי ממורה למוזיקה לאדם שצריך לשכנע את שרי הקבינט. זה לא אני"</h2>
-        <p>מקור: haaretz | 2025-04-19 06:00:01</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-19 06:00:01</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/kolkore/2025-04-19/ty-article/00000196-42a9-d513-adb7-4feb80320000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ישראל תקפה שני פעילי חיזבאללה; מזכ"ל הארגון: ההזדמנות לדיפלומטיה מוגבלת</h2>
-        <p>מקור: haaretz | 2025-04-18 22:53:18</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 22:53:18</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.premium/00000196-4a6c-dd47-ad9f-cafdb2a40000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פלסטיני בן 60 נורה בידי רכז ביטחון במסאפר יטא ואיבד את רגלו</h2>
-        <p>מקור: haaretz | 2025-04-18 22:25:37</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 22:25:37</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.premium/00000196-49d9-ddef-a5df-dffb9f0b0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>דיווחים ברצועה: 47 נהרגו מאש צה"ל מהבוקר, בהם ילדים ואישה בהיריון</h2>
-        <p>מקור: haaretz | 2025-04-18 18:19:30</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 18:19:30</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.premium/00000196-495f-ddef-a5df-dfff0a670000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שר החוץ של איראן: ניתן להגיע להסכם על תוכנית הגרעין שלנו, ארה"ב רצינית</h2>
-        <p>מקור: haaretz | 2025-04-18 15:10:58</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 15:10:58</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-18/ty-article/.premium/00000196-489e-d9fb-a79f-6ede97e30000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>אביו של החייל החטוף איתי חן: נתניהו הצליח לסכסך בין משפחות חטופים</h2>
-        <p>מקור: haaretz | 2025-04-18 14:25:02</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 14:25:02</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/00000196-4890-d352-a9d7-4fbefea10000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שוטרים השליכו רימון הלם לחצר בית בנצרת ונמלטו מהמקום</h2>
-        <p>מקור: haaretz | 2025-04-18 13:11:35</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 13:11:35</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/law/2025-04-18/ty-article/00000196-4850-dd47-ad9f-cad938740000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ישראלית נהרגה בהתרסקות קרון רכבל ליד נאפולי שבדרום איטליה</h2>
-        <p>מקור: haaretz | 2025-04-18 11:39:36</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 11:39:36</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-18/ty-article/00000196-4801-d352-a9d7-4f2fbc530000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>רוביו: אם המו"מ על המלחמה באוקראינה לא יתקדם בקרוב, נעבור הלאה</h2>
-        <p>מקור: haaretz | 2025-04-18 11:38:06</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 11:38:06</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/europe/2025-04-18/ty-article/.premium/00000196-47cb-d513-adb7-4fcb2a130000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ארה"ב תקפה את נמל הדלק של החותים, שמדווחים על עשרות הרוגים</h2>
-        <p>מקור: haaretz | 2025-04-18 09:32:47</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 09:32:47</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/00000196-477b-d352-a9d7-4f7f05720000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"התחייבנו לא להשאיר אנשים מאחור, ואנחנו משאירים": חותמי מכתב הרופאים מדברים</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:17</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:17</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.premium/00000196-4391-ddef-a5df-dffbc9e50000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>עזה זרועה תחמושת שלא התפוצצה, וישראל פוגעת במאמץ הפינוי</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:16</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:16</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.premium/00000196-44f3-ddef-a5df-dffbff280000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>המצב בעזה כעת אינו מלחמה, אלא מתקפה חסרת רסן ותכלית נגד אזרחים</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:15</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:15</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.premium/00000196-446c-d587-abb7-ecef880b0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>פרשת השבוע משרתת את ראש הממשלה במלחמות הפרטיות שלו</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:14</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:14</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-18/ty-article/.highlight/00000196-4554-dd47-ad9f-c7dd546c0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טראמפ משנה את המזרח התיכון, ולנתניהו נותר לצפות מהיציע</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:13</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:13</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-18/ty-article/.highlight/00000196-4547-dd47-ad9f-c7dfdebc0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טראמפ מאיים על האקדמיה האמריקאית, אבל הוא גם עושה לה טובה גדולה</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:12</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:12</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/america/2025-04-18/ty-article/.premium/00000196-4547-d513-adb7-4d4ffa560000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>קודם מכים ואז הורסים: כך ייעשה לתושבי כפר שלו שרצו לבנות באדמתם</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:11</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:11</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/twilightzone/2025-04-18/ty-article/.premium/00000196-4563-d352-a9d7-4f6f08760000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מה עשו הנאצים להומואים ומי נשלחו ראשונים לתאי הגזים: לימודי השואה מקבלים עדכון</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:10</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:10</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/magazine/2025-04-18/ty-article-magazine/.highlight/00000196-3e60-d124-a5d7-be761bbf0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מדינת האיים טובאלו הפעילה השבוע, לראשונה בתולדותיה, שירותי בנק ממוחשבים</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:09</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:09</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/2025-04-18/ty-article/.premium/00000196-44b6-d587-abb7-ecb70a600000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הרופא מהעוטף ששובת למען החטופים מבקש לטפל בסיבה האמיתית לתחלואה של מטופליו</h2>
-        <p>מקור: haaretz | 2025-04-18 06:00:04</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-18 06:00:04</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/kolkore/2025-04-18/ty-article/00000196-3d50-d646-ad96-fd7833a10000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>ארה"ב החלה לצמצם את כוחותיה בסוריה</h2>
-        <p>מקור: haaretz | 2025-04-17 23:22:26</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-17 23:22:26</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/world/middle-east/2025-04-17/ty-article/00000196-4552-ddef-a5df-dffbb5be0000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>בכיר חמאס דוחה את ההצעה הישראלית: לא נסכים לעסקאות החלקיות של נתניהו</h2>
-        <p>מקור: haaretz | 2025-04-17 22:52:23</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-17 22:52:23</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-17/ty-article/.premium/00000196-453b-d352-a9d7-4f3f32a50000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>טראמפ על הדיווח כי בלם תקיפה ישראלית באיראן: אני פשוט לא ממהר לעשות את זה</h2>
-        <p>מקור: haaretz | 2025-04-17 22:49:30</p>
+        <div class="source-line">
+            <span class="source">מקור: haaretz</span>
+            <span class="date">2025-04-17 22:49:30</span>
+        </div>
         <p><a href="https://www.haaretz.co.il/news/politics/2025-04-17/ty-article/.premium/00000196-451a-d587-abb7-ed9b5f680000" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>גל פרישות בצמרת המשטרה? "עשויות לשרת אותנו היטב כמדינה"</h2>
-        <p>מקור: makor_rishon | 2024-09-05 18:28:37</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 18:28:37</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/news/783186/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>מתחת לפני השטח: המתיחות עם מצרים מקשה על הטיפול בציר פילדלפי</h2>
-        <p>מקור: makor_rishon | 2024-09-05 17:55:21</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 17:55:21</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/news/783149/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>שרות נגד המשטר: הנשים האפגניות מתעמתות עם אנשי הטאליבן</h2>
-        <p>מקור: makor_rishon | 2024-09-05 17:07:22</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 17:07:22</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/news/783057/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>15 ביום אחד: האיש שמחזיק בהכי הרבה שיאי גינס</h2>
-        <p>מקור: makor_rishon | 2024-09-05 16:50:05</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 16:50:05</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/magazine/dyukan/781453/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>"מחיר אטרקטיבי ללקוח": ב.מ.וו תשיק מכונית מונעת מימן</h2>
-        <p>מקור: makor_rishon | 2024-09-05 16:30:37</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 16:30:37</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/scienceandtech/783112/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>תומך ישראל: מיהו מישל ברנייה, ראש הממשלה החדש של צרפת</h2>
-        <p>מקור: makor_rishon | 2024-09-05 15:48:54</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 15:48:54</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/news/783124/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>חוקרים בכירים: הדיווחים שחמאס משקם את יכולותיו אמינים – אך מטעים</h2>
-        <p>מקור: makor_rishon | 2024-09-05 15:23:25</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 15:23:25</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/news/783086/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>הכול פוליטי? בין השביתה להקלטות מנדלבליט-נוה עובר קו ישיר</h2>
-        <p>מקור: makor_rishon | 2024-09-05 15:00:08</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 15:00:08</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/podcasts/783044/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>סקר: רוב מורי התיכונים שובתים – אך לא מסכימים עם ארגון המורים</h2>
-        <p>מקור: makor_rishon | 2024-09-05 14:38:40</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 14:38:40</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/news/783118/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>איזו שערורייה הורידה מהמסך סדרה משטרתית? הטריוויה השבועית</h2>
-        <p>מקור: makor_rishon | 2024-09-05 14:22:02</p>
+        <div class="source-line">
+            <span class="source">מקור: makor_rishon</span>
+            <span class="date">2024-09-05 14:22:02</span>
+        </div>
         <p><a href="https://www.makorrishon.co.il/ratzbareshet/783084/" target="_blank">קרא עוד</a></p>
     </div>
     <div class="item">
         <h2>גיא איתן עוזר לעיוור</h2>
-        <p>מקור: israel_hayom | 2024-08-14 17:24:07</p>
+        <div class="source-line">
+            <span class="source">מקור: israel_hayom</span>
+            <span class="date">2024-08-14 17:24:07</span>
+        </div>
         <p><a href="https://www.israelhayom.co.il/forreal/paparazzi/article/16260779" target="_blank">קרא עוד</a></p>
     </div>
 </body>
