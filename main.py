@@ -201,8 +201,9 @@ def generate_html(conn):
         lookup = TemplateLookup(directories=['templates'])
         template = lookup.get_template('news.mako')
         
-        # Get current time for last update
-        current_time = datetime.utcnow().strftime('%d/%m/%Y %H:%M:%S')
+        # Get current time in Israel timezone
+        israel_tz = pytz.timezone('Asia/Jerusalem')
+        current_time = datetime.now(israel_tz).strftime('%d/%m/%Y %H:%M:%S')
         
         logger.info("Rendering template")
         html_content = template.render(
@@ -225,8 +226,9 @@ def generate_html(conn):
 def update_news_periodically():
     while True:
         try:
-            # Get current time in UTC
-            current_time = datetime.utcnow().strftime('%d/%m/%Y %H:%M:%S')
+            # Get current time in Israel timezone
+            israel_tz = pytz.timezone('Asia/Jerusalem')
+            current_time = datetime.now(israel_tz).strftime('%d/%m/%Y %H:%M:%S')
             logger.info(f"Starting news update at {current_time}")
             
             logger.info("Step 1: Creating database connection")
