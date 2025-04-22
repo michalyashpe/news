@@ -20,6 +20,9 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Initialize background thread variable
+background_thread = None
+
 # Replace with environment variables
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
@@ -50,42 +53,61 @@ def get_feed_items():
         'kipa': 'https://www.kipa.co.il/rss/',
         'maariv': 'https://www.maariv.co.il/Rss/RssFeedsArutzSheva',
         'walla': 'https://rss.walla.co.il/feed/1',
-        # 'calcalist': 'https://www.calcalist.co.il/GeneralRss/0,16335,L-8,00.xml',
-        # 'globes': 'https://www.globes.co.il/webservice/rss/rssfeeder.asmx/FeederNode?iID=585',
         'kan': 'https://www.kan.org.il/rss/',
         'makor_rishon': 'https://www.makorrishon.co.il/rss/'
     }
     
     items = []
+    seen_ids = set()  # Track IDs to prevent duplicates
+    
     for source, url in feeds.items():
-        feed = feedparser.parse(url)
-        for entry in feed.entries:
-            # Get image URL from media content or enclosures if available
-            image_url = None
-            # if 'image' in entry:
-            #     image_url = entry.get('image', [])
-            #     print(f"Image URL: {image_url}")
-            # elif 'media_content' in entry:
-            #     media_contents = entry.get('media_content', [])
-            #     if media_contents and 'url' in media_contents[0]:
-            #         image_url = media_contents[0]['url']
-            # elif 'enclosures' in entry:
-            #     enclosures = entry.get('enclosures', [])
-            #     if enclosures and 'url' in enclosures[0]:
-            #         image_url = enclosures[0]['url']
+        try:
+            feed = feedparser.parse(url)
+            if not feed.entries:
+                logger.warning(f"No entries found in feed: {source}")
+                continue
+                
+            for entry in feed.entries:
+                try:
+                    # Get image URL from media content or enclosures if available
+                    image_url = None
+                    if 'media_content' in entry:
+                        media_contents = entry.get('media_content', [])
+                        if media_contents and 'url' in media_contents[0]:
+                            image_url = media_contents[0]['url']
+                    elif 'enclosures' in entry:
+                        enclosures = entry.get('enclosures', [])
+                        if enclosures and 'url' in enclosures[0]:
+                            image_url = enclosures[0]['url']
 
-            item = {
-                'title': entry.title,
-                'link': entry.link,
-                'source': source,
-                'pub_date': entry.get('published', ''),
-                'description': entry.get('description', ''),
-                'image_url': image_url
-            }
-            # Create unique ID from content
-            item_id = hashlib.md5(f"{item['title']}{item['link']}".encode()).hexdigest()
-            item['id'] = item_id
-            items.append(item)
+                    # Create a more unique ID using source, title, link, and pub_date
+                    pub_date = entry.get('published', '')
+                    id_string = f"{source}:{entry.title}:{entry.link}:{pub_date}"
+                    item_id = hashlib.md5(id_string.encode()).hexdigest()
+                    
+                    # Skip if we've already seen this ID
+                    if item_id in seen_ids:
+                        logger.debug(f"Skipping duplicate item: {entry.title}")
+                        continue
+                    seen_ids.add(item_id)
+
+                    item = {
+                        'id': item_id,
+                        'title': entry.title,
+                        'link': entry.link,
+                        'source': source,
+                        'pub_date': pub_date,
+                        'description': entry.get('description', ''),
+                        'image_url': image_url
+                    }
+                    items.append(item)
+                except Exception as e:
+                    logger.error(f"Error processing entry in feed {source}: {str(e)}")
+                    continue
+        except Exception as e:
+            logger.error(f"Error processing feed {source}: {str(e)}")
+            continue
+            
     return items
 
 def save_items(conn, items):
@@ -99,52 +121,44 @@ def save_items(conn, items):
             else:
                 parsed_date = datetime.strptime(item['pub_date'], '%a, %d %b %Y %H:%M:%S %z')
         except ValueError as e:
-            print(f"Date parsing error for {item['source']}: {item['pub_date']}")
+            logger.warning(f"Date parsing error for {item['source']}: {item['pub_date']}")
             parsed_date = datetime.now()
 
-        # Check if item already exists
-        
-        c.execute('SELECT id FROM news_items WHERE id = ?', (item['id'],))
-        if c.fetchone() is None:
-            # Get headlines from last 24 hours
-            c.execute('''
-                SELECT title FROM news_items 
-                WHERE datetime(pub_date) >= datetime('now', '-1 day')
-            ''')
-            recent_headlines = [row[0] for row in c.fetchall()]
+        try:
+            # Check if item already exists
+            c.execute('SELECT id FROM news_items WHERE id = ?', (item['id'],))
+            if c.fetchone() is None:
+                # Insert the new item
+                c.execute('''
+                    INSERT INTO news_items 
+                    (id, title, link, source, pub_date, description, image_url)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', (
+                    item['id'],
+                    item['title'],
+                    item['link'],
+                    item['source'],
+                    parsed_date.strftime('%Y-%m-%d %H:%M:%S'),
+                    item['description'],
+                    item['image_url']
+                ))
+            else:
+                # Update existing item
+                c.execute('''
+                    UPDATE news_items 
+                    SET title = ?, pub_date = ?, description = ?, image_url = ?
+                    WHERE id = ?
+                ''', (
+                    item['title'],
+                    parsed_date.strftime('%Y-%m-%d %H:%M:%S'),
+                    item['description'],
+                    item['image_url'],
+                    item['id']
+                ))
+        except sqlite3.IntegrityError as e:
+            logger.warning(f"Integrity error for item {item['id']}: {str(e)}")
+            continue  # Skip this item and continue with the next one
             
-            # If there are recent headlines, check for new information
-            # if recent_headlines:
-            #     is_new_info = ask_llm(item['title'], recent_headlines)
-            #     if is_new_info:
-            #         print(f"New information detected in: {item['title']}")
-            
-            # Insert the new item
-            c.execute('''
-                INSERT INTO news_items 
-                (id, title, link, source, pub_date, description, image_url)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (
-                item['id'],
-                item['title'],
-                item['link'],
-                item['source'],
-                parsed_date.strftime('%Y-%m-%d %H:%M:%S'),
-                item['description'],
-                item['image_url']
-            ))
-        else:
-            # Update if title has changed
-            c.execute('''
-                UPDATE news_items 
-                SET title = ?, pub_date = ?, image_url = ?
-                WHERE id = ?
-            ''', (
-                item['title'],
-                parsed_date.strftime('%Y-%m-%d %H:%M:%S'),
-                item['image_url'],
-                item['id']
-            ))
     conn.commit()
 
 def ask_llm(new_headline, recent_headlines):
@@ -177,46 +191,78 @@ def print_all_items(conn):
         print(f"Title: {row[1]}\nSource: {row[3]}\nLink: {row[2]}\n")
 
 def generate_html(conn):
-    c = conn.cursor()
-    lookup = TemplateLookup(directories=['templates'])
-    template = lookup.get_template('news.mako')
-    
-    items = c.execute('SELECT *, datetime(pub_date) as formatted_date FROM news_items ORDER BY pub_date DESC LIMIT 500').fetchall()
-    html_content = template.render(items=items)
-    
-    with open('news.html', 'w', encoding='utf-8') as f:
-        f.write(html_content)
+    try:
+        c = conn.cursor()
+        logger.info("Fetching items from database")
+        items = c.execute('SELECT *, datetime(pub_date) as formatted_date FROM news_items ORDER BY pub_date DESC LIMIT 500').fetchall()
+        logger.info(f"Found {len(items)} items to display")
+        
+        logger.info("Setting up template lookup")
+        lookup = TemplateLookup(directories=['templates'])
+        template = lookup.get_template('news.mako')
+        
+        # Get current time for last update
+        current_time = datetime.utcnow().strftime('%d/%m/%Y %H:%M:%S')
+        
+        logger.info("Rendering template")
+        html_content = template.render(
+            items=items,
+            last_update_time=current_time
+        )
+        
+        logger.info("Writing HTML file")
+        with open('news.html', 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        logger.info("HTML file written successfully")
+        
+    except Exception as e:
+        logger.error(f"Error in generate_html: {str(e)}")
+        logger.error(f"Error type: {type(e).__name__}")
+        import traceback
+        logger.error(f"Error traceback: {traceback.format_exc()}")
+        raise  # Re-raise the exception to be caught by the caller
 
 def update_news_periodically():
     while True:
         try:
-            israel_tz = pytz.timezone('Asia/Jerusalem')
-            current_time = datetime.now(israel_tz).strftime('%d/%m/%Y %H:%M:%S')
+            # Get current time in UTC
+            current_time = datetime.utcnow().strftime('%d/%m/%Y %H:%M:%S')
             logger.info(f"Starting news update at {current_time}")
             
+            logger.info("Step 1: Creating database connection")
             conn = create_database()
             logger.info("Database created/connected")
             
+            logger.info("Step 2: Fetching feed items")
             items = get_feed_items()
             logger.info(f"Fetched {len(items)} news items")
             
+            logger.info("Step 3: Saving items to database")
             save_items(conn, items)
             logger.info("Saved items to database")
             
+            logger.info("Step 4: Generating HTML")
             generate_html(conn)
             logger.info("Generated HTML file")
             
+            logger.info("Step 5: Closing database connection")
             conn.close()
-            logger.info("Update completed successfully")
+            logger.info("Database connection closed")
             
-            # Save last run time
+            logger.info("Step 6: Saving last run time")
             with open('last_run.json', 'w', encoding='utf-8') as f:
                 json.dump({'last_run': current_time}, f)
-                
+            logger.info("Last run time saved")
+            
+            logger.info("Update completed successfully")
             time.sleep(30)  # Wait 30 seconds before next update
             
         except Exception as e:
             logger.error(f"Error in update: {str(e)}")
+            logger.error(f"Error type: {type(e).__name__}")
+            if hasattr(e, '__traceback__'):
+                import traceback
+                logger.error(f"Error traceback: {traceback.format_exc()}")
             time.sleep(5)  # Wait 5 seconds if there's an error
 
 @app.route('/')
@@ -242,13 +288,41 @@ def status():
             'error': str(e)
         }
 
-# Start the background thread when the app starts
 @app.before_request
-def start_background_thread():
-    thread = threading.Thread(target=update_news_periodically)
-    thread.daemon = True
-    thread.start()
-    logger.info("Background update thread started")
+def start_background_thread_once():
+    global background_thread
+    # Check if thread exists and is running
+    if background_thread is None or not background_thread.is_alive():
+        # Start the thread
+        background_thread = threading.Thread(target=update_news_periodically)
+        background_thread.daemon = True  # Ensures thread exits when main app exits
+        background_thread.start()
+        logger.info("Background update thread started or restarted")
+        
+        # Initial database setup and HTML generation
+        try:
+            conn = create_database()
+            logger.info("Database created successfully")
+            
+            items = get_feed_items()
+            logger.info(f"Fetched {len(items)} items from feeds")
+            
+            if items:
+                save_items(conn, items)
+                logger.info("Items saved to database")
+                
+                generate_html(conn)
+                logger.info("HTML generated successfully")
+            else:
+                logger.warning("No items fetched from feeds")
+                
+            conn.close()
+            logger.info("Initial setup completed successfully")
+        except Exception as e:
+            logger.error(f"Error during initial setup: {str(e)}")
+            logger.error(f"Error type: {type(e).__name__}")
+            if hasattr(e, '__traceback__'):
+                logger.error(f"Error traceback: {str(e.__traceback__)}")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

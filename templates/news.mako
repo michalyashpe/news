@@ -17,6 +17,13 @@
             border-bottom: 2px solid #000;
             padding-bottom: 10px;
         }
+        .last-updated {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
         .item {
             border-bottom: 1px solid #ccc;
             padding: 20px 0;
@@ -43,6 +50,7 @@
 </head>
 <body>
     <h1>חדשות</h1>
+    <div class="last-updated">עודכן לאחרונה: ${last_update_time}</div>
     % for item in items:
     <div class="item">
         <h2>${item[1]}</h2>
