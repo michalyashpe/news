@@ -26,29 +26,55 @@
             margin-bottom: 20px;
         }
         .item {
-            border-bottom: 1px solid #ccc;
-            padding: 20px 0;
+            padding: 0;
             break-inside: avoid;
         }
         h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.25rem;
+            margin: 0;
+            font-size: 1.1rem;
             line-height: 1.4;
         }
-        .source-line {
+        .headline-link {
+            text-decoration: none;
+            color: inherit;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: #666;
+            flex-direction: row-reverse;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 8px;
+            gap: 15px;
+        }
+        .headline-link:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .source-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 80px;
+            text-align: left;
+            border-right: 1px solid #eee;
+            padding-right: 10px;
         }
         .source {
             font-weight: bold;
+            font-size: 0.8rem;
+            color: #666;
         }
         .date {
             direction: ltr;
             unicode-bidi: bidi-override;
+            font-size: 0.75rem;
+            color: #888;
+        }
+        .headline-content {
+            flex: 1;
         }
         p {
             line-height: 1.6;
@@ -102,16 +128,19 @@
     </style>
 </head>
 <body>
-    <h1>חדשות</h1>
+    <h1>רק כותרות</h1>
     <div class="last-updated">עודכן לאחרונה: ${last_update_time}</div>
     % for item in items:
     <div class="item">
-        <h2>${item[1]}</h2>
-        <div class="source-line">
-            <span class="source">מקור: ${item[3]}</span>
-            <span class="date">${item[4]}</span>
-        </div>
-        <p><a href="${item[2]}" target="_blank">קרא עוד</a></p>
+        <a href="${item[2]}" target="_blank" class="headline-link">
+            <div class="source-info">
+                <span class="source">${item[3]}</span>
+                <span class="date">${item[4].split()[0].split('-')[2]}/${item[4].split()[0].split('-')[1]} ${item[4].split()[1][:5]}</span>
+            </div>
+            <div class="headline-content">
+                <h2>${item[1]}</h2>
+            </div>
+        </a>
     </div>
     % endfor
 </body>
