@@ -1,3 +1,6 @@
 .env
 *.db
+news.db
+news.html
+last_run.json
 __pycache__/ 

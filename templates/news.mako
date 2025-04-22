@@ -5,9 +5,12 @@
     <title>News Feed</title>
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="apple-touch-icon" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: "Times New Roman", serif;
+            font-family: "Alef", "Arial", sans-serif;
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
@@ -17,9 +20,8 @@
         h1 {
             text-align: center;
             font-size: 2.5rem;
-            border-bottom: 2px solid #000;
             padding-bottom: 10px;
-            margin: 0 0 20px 0;
+            margin: 0 0 10px 0;
         }
         .last-updated {
             text-align: center;
@@ -35,6 +37,7 @@
             margin: 0;
             font-size: 1.1rem;
             line-height: 1.4;
+            font-weight: 400;
         }
         .headline-link {
             text-decoration: none;
@@ -65,9 +68,9 @@
             padding-right: 10px;
         }
         .source {
-            font-weight: bold;
-            font-size: 0.8rem;
-            color: #666;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #444;
         }
         .date {
             direction: ltr;
