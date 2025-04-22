@@ -22,12 +22,20 @@
             font-size: 2.5rem;
             padding-bottom: 10px;
             margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
         }
         .last-updated {
-            text-align: center;
             font-size: 0.875rem;
             color: #666;
-            margin-bottom: 20px;
+            position: absolute;
+            left: 0;
+        }
+        .title {
+            flex: 1;
+            text-align: center;
         }
         .item {
             padding: 0;
@@ -133,8 +141,10 @@
     </style>
 </head>
 <body>
-    <h1>רק כותרות</h1>
-    <div class="last-updated">עודכן לאחרונה: ${last_update_time}</div>
+    <h1>
+        <span class="last-updated">עודכן לאחרונה: ${last_update_time}</span>
+        <span class="title">רק כותרות</span>
+    </h1>
     % for item in items:
     <div class="item">
         <a href="${item[2]}" target="_blank" class="headline-link">
