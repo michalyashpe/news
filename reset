@@ -1,1 +1,1 @@
-python main.py reset
+python -m news.app reset

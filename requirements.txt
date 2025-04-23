@@ -4,3 +4,4 @@ openai
 mako
 gunicorn
 pytz
+python-dotenv

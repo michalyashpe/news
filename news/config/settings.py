@@ -1,19 +1,40 @@
 import os
 from datetime import timedelta
 
+# Get the absolute path of the workspace root
+WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Database settings
 DATABASE_PATH = 'news.db'
 
 # Feed settings
 FEEDS = {
-    'haaretz': 'https://www.haaretz.co.il/srv/rss---feedly',
-    'ynet': 'https://www.ynet.co.il/Integration/StoryRss2.xml',
-    'israel_hayom': 'https://www.israelhayom.co.il/rss.xml',
-    'kipa': 'https://www.kipa.co.il/rss/',
-    'maariv': 'https://www.maariv.co.il/Rss/RssFeedsArutzSheva',
-    'walla': 'https://rss.walla.co.il/feed/1',
-    'kan': 'https://www.kan.org.il/rss/',
-    'makor_rishon': 'https://www.makorrishon.co.il/rss/'
+    # 'haaretz': 'https://www.haaretz.co.il/srv/rss---feedly',
+    # 'ynet': 'https://www.ynet.co.il/Integration/StoryRss2.xml',
+    # 'israel_hayom': 'https://www.israelhayom.co.il/rss.xml',
+    # 'kipa': 'https://www.kipa.co.il/rss/',
+    # 'maariv': 'https://www.maariv.co.il/Rss/RssFeedsArutzSheva',
+    # 'walla': 'https://rss.walla.co.il/feed/1',
+    # 'kan': 'https://www.kan.org.il/rss/',
+    # 'makor_rishon': 'https://www.makorrishon.co.il/rss/'
+
+    'ynet': 'https://z.ynet.co.il/short/content/RSS/index.html',
+    'הארץ': 'https://www.haaretz.co.il/srv/rss---feedly',
+    'ישראל היום': 'https://www.israelhayom.co.il/rss.xml',
+    'מקור ראשון': 'https://www.makorrishon.co.il/feed/',
+    # 'וואלה': 'https://rss.walla.co.il/feed/1?type=main',
+    'וואלה': 'https://rss.walla.co.il/feed/22',
+    'כיפה': 'https://www.kipa.co.il/feed/%D7%97%D7%93%D7%A9%D7%95%D7%AA/',
+    'מעריב': 'https://www.maariv.co.il/Rss/RssChadashot',
+    'זמן ישראל': 'https://www.zman.co.il/feed/',
+    'ערוץ 7': 'https://www.inn.co.il/Rss.aspx',
+    'N12': 'https://www.mako.co.il/rss/31750a2610f26110VgnVCM1000005201000aRCRD.xml'
+    # 'המחדש': 'not found',
+    # 'כאן': 'https://www.kan.org.il/headlines/'//no rss link found
+    # 'n13: not found
+    # 'c14': ' not found',
+    # 'סרוגים': '',
+    # '0404': '',
 }
 
 # Update settings
@@ -28,7 +49,7 @@ OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
 DEFAULT_PORT = 5000
 TEMPLATE_DIR = 'templates'
 STATIC_DIR = 'static'
-HTML_OUTPUT_FILE = 'news.html'
+HTML_OUTPUT_FILE = os.path.join(WORKSPACE_ROOT, 'news.html')
 LAST_RUN_FILE = 'last_run.json'
 
 # Timezone settings

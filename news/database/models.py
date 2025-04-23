@@ -1,28 +1,31 @@
 import sqlite3
 from datetime import datetime
 import logging
+import threading
 from ..config.settings import DATABASE_PATH
 
 logger = logging.getLogger(__name__)
 
 class Database:
     def __init__(self):
-        self.conn = None
-        self.connect()
+        self._local = threading.local()
+        self._create_tables()
 
-    def connect(self):
-        """Establish database connection"""
-        try:
-            self.conn = sqlite3.connect(DATABASE_PATH)
-            self.conn.row_factory = sqlite3.Row
-            self._create_tables()
-        except sqlite3.Error as e:
-            logger.error(f"Database connection error: {str(e)}")
-            raise
+    def _get_connection(self):
+        """Get or create a database connection for the current thread"""
+        if not hasattr(self._local, 'conn'):
+            try:
+                self._local.conn = sqlite3.connect(DATABASE_PATH)
+                self._local.conn.row_factory = sqlite3.Row
+            except sqlite3.Error as e:
+                logger.error(f"Database connection error: {str(e)}")
+                raise
+        return self._local.conn
 
     def _create_tables(self):
         """Create necessary tables if they don't exist"""
-        cursor = self.conn.cursor()
+        conn = self._get_connection()
+        cursor = conn.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS news_items (
                 id TEXT PRIMARY KEY,
@@ -34,11 +37,12 @@ class Database:
                 image_url TEXT
             )
         ''')
-        self.conn.commit()
+        conn.commit()
 
     def save_items(self, items):
         """Save or update news items in the database"""
-        cursor = self.conn.cursor()
+        conn = self._get_connection()
+        cursor = conn.cursor()
         for item in items:
             try:
                 # Check if item exists
@@ -75,11 +79,12 @@ class Database:
                 logger.warning(f"Integrity error for item {item['id']}: {str(e)}")
                 continue
 
-        self.conn.commit()
+        conn.commit()
 
     def get_recent_items(self, limit=500):
         """Get recent news items from the database"""
-        cursor = self.conn.cursor()
+        conn = self._get_connection()
+        cursor = conn.cursor()
         return cursor.execute('''
             SELECT *, datetime(pub_date) as formatted_date 
             FROM news_items 
@@ -88,6 +93,7 @@ class Database:
         ''', (limit,)).fetchall()
 
     def close(self):
-        """Close database connection"""
-        if self.conn:
-            self.conn.close() 
+        """Close database connection for the current thread"""
+        if hasattr(self._local, 'conn'):
+            self._local.conn.close()
+            delattr(self._local, 'conn') 
