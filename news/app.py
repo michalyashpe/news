@@ -6,10 +6,14 @@ import os
 from flask import Flask, send_file
 from datetime import datetime
 import pytz
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from .config.settings import (
     DEFAULT_PORT, STATIC_DIR, LAST_RUN_FILE, TIMEZONE,
-    UPDATE_INTERVAL, ERROR_RETRY_INTERVAL
+    UPDATE_INTERVAL, ERROR_RETRY_INTERVAL, HTML_OUTPUT_FILE
 )
 from .database.models import Database
 from .feeds.fetcher import FeedFetcher
@@ -75,7 +79,7 @@ def update_news():
 def serve_news():
     """Serve the generated HTML file"""
     try:
-        return send_file('news.html')
+        return send_file(HTML_OUTPUT_FILE)
     except Exception as e:
         logger.error(f"Error serving news.html: {str(e)}")
         return f"Error: {str(e)}", 500

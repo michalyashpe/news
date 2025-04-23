@@ -9,6 +9,13 @@ logger = logging.getLogger(__name__)
 class FeedFetcher:
     def __init__(self):
         self.seen_ids = set()
+        self.date_formats = [
+            '%a, %d %b %Y %H:%M:%S %z',  # Standard timezone format
+            '%a, %d %b %Y %H:%M:%S GMT',  # GMT format
+            '%a, %d %b %Y %H:%M:%S',      # No timezone format
+            '%Y-%m-%dT%H:%M:%S%z',        # ISO format with timezone
+            '%Y-%m-%dT%H:%M:%S'           # ISO format without timezone
+        ]
 
     def _generate_item_id(self, source, title, link, pub_date):
         """Generate a unique ID for a news item"""
@@ -17,13 +24,20 @@ class FeedFetcher:
 
     def _parse_date(self, date_str, source):
         """Parse date string based on source format"""
-        try:
-            if source == 'walla':
-                return datetime.strptime(date_str, '%a, %d %b %Y %H:%M:%S GMT')
-            return datetime.strptime(date_str, '%a, %d %b %Y %H:%M:%S %z')
-        except ValueError as e:
+        parsed_date = None
+        
+        for date_format in self.date_formats:
+            try:
+                parsed_date = datetime.strptime(date_str, date_format)
+                break  # If parsing succeeds, break the loop
+            except ValueError:
+                continue
+        
+        if parsed_date is None:
             logger.warning(f"Date parsing error for {source}: {date_str}")
-            return datetime.now()
+            parsed_date = datetime.now()
+            
+        return parsed_date
 
     def _extract_image_url(self, entry):
         """Extract image URL from feed entry"""

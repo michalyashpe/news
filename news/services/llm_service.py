@@ -6,9 +6,16 @@ logger = logging.getLogger(__name__)
 
 class LLMService:
     def __init__(self):
+        if not OPENROUTER_API_KEY:
+            raise ValueError("OPENROUTER_API_KEY environment variable is not set")
+            
         self.client = OpenAI(
             base_url=OPENROUTER_BASE_URL,
             api_key=OPENROUTER_API_KEY,
+            default_headers={
+                "HTTP-Referer": "<YOUR_SITE_URL>",
+                "X-Title": "<YOUR_SITE_NAME>",
+            }
         )
 
     def is_new_information(self, new_headline, recent_headlines):
@@ -23,10 +30,6 @@ class LLMService:
             messages = [{"role": "user", "content": content}]
             
             completion = self.client.chat.completions.create(
-                extra_headers={
-                    "HTTP-Referer": "<YOUR_SITE_URL>",
-                    "X-Title": "<YOUR_SITE_NAME>",
-                },
                 model="deepseek/deepseek-r1-zero:free",
                 messages=messages
             )
