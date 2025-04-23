@@ -1,5 +1,8 @@
 import os
+import logging
 from datetime import timedelta
+
+logger = logging.getLogger(__name__)
 
 # Get the absolute path of the workspace root
 WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,6 +38,7 @@ ERROR_RETRY_INTERVAL = timedelta(seconds=5)
 # LLM settings
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
+logger.info(f"Loaded OPENROUTER_API_KEY from environment: {'*' * len(OPENROUTER_API_KEY) if OPENROUTER_API_KEY else 'None'}")
 
 # Application settings
 DEFAULT_PORT = 5000
