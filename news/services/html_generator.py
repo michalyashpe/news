@@ -18,7 +18,7 @@ class HTMLGenerator:
             
             # Get current time in specified timezone
             tz = pytz.timezone(TIMEZONE)
-            current_time = datetime.now(tz).strftime('%d/%m/%Y %H:%M:%S')
+            current_time = datetime.now(tz).strftime('%d/%m %H:%M')
             
             html_content = template.render(
                 items=items,

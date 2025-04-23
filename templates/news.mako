@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Feed</title>
+    <title>רק כותרות</title>
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="apple-touch-icon" href="/static/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,16 @@
             color: #666;
             position: absolute;
             left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+        .last-updated-title {
+            font-weight: bold;
+        }
+        .last-updated-time {
+            font-size: 0.8rem;
         }
         .title {
             flex: 1;
@@ -142,7 +152,10 @@
 </head>
 <body>
     <h1>
-        <span class="last-updated">עודכן לאחרונה: ${last_update_time}</span>
+        <span class="last-updated">
+            <span class="last-updated-title">עודכן לאחרונה</span>
+            <span class="last-updated-time">${last_update_time}</span>
+        </span>
         <span class="title">רק כותרות</span>
     </h1>
     % for item in items:
