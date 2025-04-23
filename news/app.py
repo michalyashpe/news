@@ -24,8 +24,7 @@ from .services.llm_service import LLMService
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
-app.static_folder = STATIC_DIR
+app = Flask(__name__, static_folder=STATIC_DIR, static_url_path='/static')
 
 # Initialize services
 db = Database()
