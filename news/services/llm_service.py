@@ -1,11 +1,15 @@
 from openai import OpenAI
 import logging
+import os
 from ..config.settings import OPENROUTER_BASE_URL, OPENROUTER_API_KEY
 
 logger = logging.getLogger(__name__)
 
 class LLMService:
     def __init__(self):
+        logger.info(f"Checking OPENROUTER_API_KEY: {'*' * len(OPENROUTER_API_KEY) if OPENROUTER_API_KEY else 'None'}")
+        logger.info(f"Environment variables: {os.environ.get('OPENROUTER_API_KEY')}")
+        
         if not OPENROUTER_API_KEY:
             raise ValueError("OPENROUTER_API_KEY environment variable is not set")
             
