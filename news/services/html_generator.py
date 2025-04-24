@@ -3,7 +3,7 @@ from mako.lookup import TemplateLookup
 import logging
 import pytz
 from datetime import datetime
-from ..config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE
+from ..config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE, ENVIRONMENT
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +22,8 @@ class HTMLGenerator:
             
             html_content = template.render(
                 items=items,
-                last_update_time=current_time
+                last_update_time=current_time,
+                environment=ENVIRONMENT
             )
             
             with open(HTML_OUTPUT_FILE, 'w', encoding='utf-8') as f:
