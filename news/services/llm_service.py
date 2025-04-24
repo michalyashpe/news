@@ -15,11 +15,7 @@ class LLMService:
             
         self.client = OpenAI(
             base_url=OPENROUTER_BASE_URL,
-            api_key=OPENROUTER_API_KEY,
-            default_headers={
-                "HTTP-Referer": "<YOUR_SITE_URL>",
-                "X-Title": "<YOUR_SITE_NAME>",
-            }
+            api_key=OPENROUTER_API_KEY
         )
 
     def is_new_information(self, new_headline, recent_headlines):
