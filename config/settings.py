@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Database settings
-DATABASE_PATH = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH', '/tmp'), 'news.db')
+DATABASE_PATH = os.path.join(WORKSPACE_ROOT, 'database', 'news.db')
 
 # Feed settings
 FEEDS = {
@@ -42,16 +42,16 @@ logger.info(f"Loaded OPENROUTER_API_KEY from environment: {'*' * len(OPENROUTER_
 
 # Application settings
 DEFAULT_PORT = int(os.environ.get('PORT', 5000))
-TEMPLATE_DIR = 'templates'
-STATIC_DIR = 'static'
-HTML_OUTPUT_FILE = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH', '/tmp'), 'news.html')
-LAST_RUN_FILE = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH', '/tmp'), 'last_run.json')
+TEMPLATE_DIR = os.path.join(WORKSPACE_ROOT, 'templates')
+STATIC_DIR = os.path.join(WORKSPACE_ROOT, 'static')
+HTML_OUTPUT_FILE = os.path.join(STATIC_DIR, 'news.html')
+LAST_RUN_FILE = os.path.join(WORKSPACE_ROOT, 'data', 'last_run.json')
 
 # Timezone settings
 TIMEZONE = 'Asia/Jerusalem'
 
 # Environment settings
-ENVIRONMENT = os.environ.get('RAILWAY_ENVIRONMENT', 'staging')  # Default to staging if not set
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 IS_PRODUCTION = ENVIRONMENT == 'production'
 IS_STAGING = ENVIRONMENT == 'staging'
 IS_DEVELOPMENT = ENVIRONMENT == 'development'

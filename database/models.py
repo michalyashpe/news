@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 import logging
 import threading
-from ..config.settings import DATABASE_PATH
+from config.settings import DATABASE_PATH
 
 logger = logging.getLogger(__name__)
 

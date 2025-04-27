@@ -3,4 +3,6 @@
 news.db
 news.html
 last_run.json
-__pycache__/ 
+__pycache__/
+.venv/
+data/ 

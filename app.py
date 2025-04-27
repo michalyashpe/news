@@ -11,15 +11,15 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-from .config.settings import (
+from config.settings import (
     DEFAULT_PORT, STATIC_DIR, LAST_RUN_FILE, TIMEZONE,
     UPDATE_INTERVAL, ERROR_RETRY_INTERVAL, HTML_OUTPUT_FILE,
-    IS_PRODUCTION, IS_STAGING, IS_DEVELOPMENT
+    IS_PRODUCTION, IS_STAGING, IS_DEVELOPMENT, ENVIRONMENT
 )
-from .database.models import Database
-from .feeds.fetcher import FeedFetcher
-from .services.html_generator import HTMLGenerator
-from .services.llm_service import LLMService
+from database.models import Database
+from feeds.fetcher import FeedFetcher
+from services.html_generator import HTMLGenerator
+from services.llm_service import LLMService
 
 # Set up logging
 logger = logging.getLogger(__name__)

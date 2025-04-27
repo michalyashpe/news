@@ -3,7 +3,7 @@ from mako.lookup import TemplateLookup
 import logging
 import pytz
 from datetime import datetime
-from ..config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE, ENVIRONMENT
+from config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE, ENVIRONMENT
 
 logger = logging.getLogger(__name__)
 

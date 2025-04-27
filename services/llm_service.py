@@ -1,7 +1,7 @@
 from openai import OpenAI
 import logging
 import os
-from ..config.settings import OPENROUTER_BASE_URL, OPENROUTER_API_KEY
+from config.settings import OPENROUTER_BASE_URL, OPENROUTER_API_KEY
 
 logger = logging.getLogger(__name__)
 

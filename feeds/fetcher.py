@@ -2,8 +2,8 @@ import feedparser
 import hashlib
 import logging
 from datetime import datetime
-from ..config.settings import FEEDS
-from ..database.models import Database
+from config.settings import FEEDS
+from database.models import Database
 import sqlite3
 
 logger = logging.getLogger(__name__)
