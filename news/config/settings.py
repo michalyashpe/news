@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Database settings
-DATABASE_PATH = 'news.db'
+DATABASE_PATH = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH', '/tmp'), 'news.db')
 
 # Feed settings
 FEEDS = {
@@ -41,11 +41,25 @@ OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
 logger.info(f"Loaded OPENROUTER_API_KEY from environment: {'*' * len(OPENROUTER_API_KEY) if OPENROUTER_API_KEY else 'None'}")
 
 # Application settings
-DEFAULT_PORT = 5000
+DEFAULT_PORT = int(os.environ.get('PORT', 5000))
 TEMPLATE_DIR = 'templates'
 STATIC_DIR = 'static'
-HTML_OUTPUT_FILE = os.path.join(WORKSPACE_ROOT, 'news.html')
-LAST_RUN_FILE = 'last_run.json'
+HTML_OUTPUT_FILE = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH', '/tmp'), 'news.html')
+LAST_RUN_FILE = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH', '/tmp'), 'last_run.json')
 
 # Timezone settings
-TIMEZONE = 'Asia/Jerusalem' 
+TIMEZONE = 'Asia/Jerusalem'
+
+# Environment settings
+ENVIRONMENT = os.environ.get('RAILWAY_ENVIRONMENT', 'staging')  # Default to staging if not set
+IS_PRODUCTION = ENVIRONMENT == 'production'
+IS_STAGING = ENVIRONMENT == 'staging'
+IS_DEVELOPMENT = ENVIRONMENT == 'development'
+
+logger.info(f"Running in {ENVIRONMENT} environment")
+
+# Logging configuration
+if IS_PRODUCTION or IS_STAGING:
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+else:
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s') 
