@@ -34,7 +34,14 @@ class Database:
                 source TEXT,
                 pub_date DATETIME,
                 description TEXT,
-                image_url TEXT
+                image_url TEXT,
+                UNIQUE(source, title)
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS seen_ids (
+                id TEXT PRIMARY KEY,
+                last_seen DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         ''')
         conn.commit()
@@ -96,4 +103,22 @@ class Database:
         """Close database connection for the current thread"""
         if hasattr(self._local, 'conn'):
             self._local.conn.close()
-            delattr(self._local, 'conn') 
+            delattr(self._local, 'conn')
+
+    def reset(self):
+        """Reset the database by dropping and recreating all tables"""
+        conn = self._get_connection()
+        cursor = conn.cursor()
+        try:
+            # Drop existing tables
+            cursor.execute('DROP TABLE IF EXISTS news_items')
+            cursor.execute('DROP TABLE IF EXISTS seen_ids')
+            conn.commit()
+            
+            # Recreate tables with new schema
+            self._create_tables()
+            logger.info("Database reset successfully")
+        except sqlite3.Error as e:
+            logger.error(f"Error resetting database: {str(e)}")
+            conn.rollback()
+            raise 

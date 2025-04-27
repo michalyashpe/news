@@ -129,6 +129,17 @@ def start_background_thread_once():
 
 def main():
     """Main entry point for the application"""
+    import sys
+    
+    if len(sys.argv) > 1 and sys.argv[1] == 'reset':
+        try:
+            db.reset()
+            print("Database reset successfully")
+            return
+        except Exception as e:
+            print(f"Error resetting database: {str(e)}")
+            return 1
+    
     port = int(os.environ.get('PORT', DEFAULT_PORT))
     logger.info(f"Starting application in {ENVIRONMENT} environment on port {port}")
     app.run(host='0.0.0.0', port=port)
