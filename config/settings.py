@@ -12,11 +12,11 @@ DATABASE_PATH = os.path.join(WORKSPACE_ROOT, 'database', 'news.db')
 
 # Feed settings
 FEEDS = {
-    'ynet': 'https://z.ynet.co.il/short/content/RSS/index.html',
+    'ynet': 'https://www.ynet.co.il/Integration/StoryRss2.xml',
     'הארץ': 'https://www.haaretz.co.il/srv/rss---feedly',
     'ישראל היום': 'https://www.israelhayom.co.il/rss.xml',
-    'מקור ראשון': 'https://www.makorrishon.co.il/feed/',
-    'וואלה': 'https://rss.walla.co.il/feed/22',
+    # 'מקור ראשון': 'https://www.makorrishon.co.il/feed/',
+    'וואלה': 'https://rss.walla.co.il/feed/1?type=main',
     'כיפה': 'https://www.kipa.co.il/feed/%D7%97%D7%93%D7%A9%D7%95%D7%AA/',
     'מעריב': 'https://www.maariv.co.il/Rss/RssChadashot',
     'זמן ישראל': 'https://www.zman.co.il/feed/',
