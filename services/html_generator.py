@@ -3,7 +3,7 @@ from mako.lookup import TemplateLookup
 import logging
 import pytz
 from datetime import datetime
-from ..config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE
+from config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE, ENVIRONMENT
 
 logger = logging.getLogger(__name__)
 
@@ -20,10 +20,16 @@ class HTMLGenerator:
             tz = pytz.timezone(TIMEZONE)
             current_time = datetime.now(tz).strftime('%d/%m %H:%M')
             
+            logger.info(f"Generating HTML with environment: {ENVIRONMENT}")
             html_content = template.render(
                 items=items,
-                last_update_time=current_time
+                last_update_time=current_time,
+                environment=ENVIRONMENT
             )
+            
+            # Log the favicon path being used
+            favicon_path = f"/static/favicon{'-staging' if ENVIRONMENT == 'staging' else ''}.png"
+            logger.info(f"Using favicon path: {favicon_path}")
             
             with open(HTML_OUTPUT_FILE, 'w', encoding='utf-8') as f:
                 f.write(html_content)

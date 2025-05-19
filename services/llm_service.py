@@ -1,7 +1,7 @@
 from openai import OpenAI
 import logging
 import os
-from ..config.settings import OPENROUTER_BASE_URL, OPENROUTER_API_KEY
+from config.settings import OPENROUTER_BASE_URL, OPENROUTER_API_KEY
 
 logger = logging.getLogger(__name__)
 
@@ -15,11 +15,7 @@ class LLMService:
             
         self.client = OpenAI(
             base_url=OPENROUTER_BASE_URL,
-            api_key=OPENROUTER_API_KEY,
-            default_headers={
-                "HTTP-Referer": "<YOUR_SITE_URL>",
-                "X-Title": "<YOUR_SITE_NAME>",
-            }
+            api_key=OPENROUTER_API_KEY
         )
 
     def is_new_information(self, new_headline, recent_headlines):

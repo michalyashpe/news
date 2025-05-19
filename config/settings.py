@@ -8,15 +8,15 @@ logger = logging.getLogger(__name__)
 WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Database settings
-DATABASE_PATH = 'news.db'
+DATABASE_PATH = os.path.join(WORKSPACE_ROOT, 'database', 'news.db')
 
 # Feed settings
 FEEDS = {
-    'ynet': 'https://z.ynet.co.il/short/content/RSS/index.html',
+    'ynet': 'https://www.ynet.co.il/Integration/StoryRss2.xml',
     'הארץ': 'https://www.haaretz.co.il/srv/rss---feedly',
     'ישראל היום': 'https://www.israelhayom.co.il/rss.xml',
-    'מקור ראשון': 'https://www.makorrishon.co.il/feed/',
-    'וואלה': 'https://rss.walla.co.il/feed/22',
+    # 'מקור ראשון': 'https://www.makorrishon.co.il/feed/',
+    'וואלה': 'https://rss.walla.co.il/feed/1?type=main',
     'כיפה': 'https://www.kipa.co.il/feed/%D7%97%D7%93%D7%A9%D7%95%D7%AA/',
     'מעריב': 'https://www.maariv.co.il/Rss/RssChadashot',
     'זמן ישראל': 'https://www.zman.co.il/feed/',
@@ -41,11 +41,25 @@ OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
 logger.info(f"Loaded OPENROUTER_API_KEY from environment: {'*' * len(OPENROUTER_API_KEY) if OPENROUTER_API_KEY else 'None'}")
 
 # Application settings
-DEFAULT_PORT = 5000
-TEMPLATE_DIR = 'templates'
-STATIC_DIR = 'static'
-HTML_OUTPUT_FILE = os.path.join(WORKSPACE_ROOT, 'news.html')
-LAST_RUN_FILE = 'last_run.json'
+DEFAULT_PORT = int(os.environ.get('PORT', 5000))
+TEMPLATE_DIR = os.path.join(WORKSPACE_ROOT, 'templates')
+STATIC_DIR = os.path.join(WORKSPACE_ROOT, 'static')
+HTML_OUTPUT_FILE = os.path.join(STATIC_DIR, 'news.html')
+LAST_RUN_FILE = os.path.join(WORKSPACE_ROOT, 'data', 'last_run.json')
 
 # Timezone settings
-TIMEZONE = 'Asia/Jerusalem' 
+TIMEZONE = 'Asia/Jerusalem'
+
+# Environment settings
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
+IS_PRODUCTION = ENVIRONMENT == 'production'
+IS_STAGING = ENVIRONMENT == 'staging'
+IS_DEVELOPMENT = ENVIRONMENT == 'development'
+
+logger.info(f"Running in {ENVIRONMENT} environment")
+
+# Logging configuration
+if IS_PRODUCTION or IS_STAGING:
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+else:
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s') 
