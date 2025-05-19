@@ -3,7 +3,7 @@ import threading
 import time
 import json
 import os
-from flask import Flask, send_file
+from flask import Flask, send_file, request, render_template_string
 from datetime import datetime
 import pytz
 from dotenv import load_dotenv
@@ -81,14 +81,30 @@ def update_news():
 
 @app.route('/')
 def serve_news():
-    """Serve the generated HTML file"""
+    """Serve the generated HTML file or filtered news view"""
     try:
+        # Check if source filter is applied
+        source = request.args.get('source')
+        
+        if source:
+            # If a source is specified, get filtered items from DB and render dynamic template
+            recent_items = db.get_filtered_items(source)
+            
+            # Get current time in specified timezone
+            tz = pytz.timezone(TIMEZONE)
+            current_time = datetime.now(tz).strftime('%d/%m %H:%M')
+            
+            # Use the HTML generator to render with filtered items
+            return html_generator.render_filtered(recent_items, current_time, source)
+        
+        # If no source filter, serve the static file
         if not os.path.exists(HTML_OUTPUT_FILE):
             logger.error(f"HTML file not found at {HTML_OUTPUT_FILE}")
             return "News page is being generated. Please try again in a few moments.", 503
+        
         return send_file(HTML_OUTPUT_FILE)
     except Exception as e:
-        logger.error(f"Error serving news.html: {str(e)}")
+        logger.error(f"Error serving news: {str(e)}")
         return f"Error: {str(e)}", 500
 
 @app.route('/status')
