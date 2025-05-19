@@ -225,7 +225,9 @@
     <div class="filter-container">
         <a href="/" class="source-filter all ${'' if selected_source else 'active'}">הכל</a>
         % for source in feeds.keys():
-            <a href="/?source=${source}" class="source-filter ${('active' if source == selected_source else '')}">${source}</a>
+            % if source in available_sources:
+                <a href="/?source=${source}" class="source-filter ${('active' if source == selected_source else '')}">${source}</a>
+            % endif
         % endfor
     </div>
     

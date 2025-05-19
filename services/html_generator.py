@@ -20,12 +20,18 @@ class HTMLGenerator:
             tz = pytz.timezone(TIMEZONE)
             current_time = datetime.now(tz).strftime('%d/%m %H:%M')
             
+            # Get list of available sources from the database
+            from database.models import Database
+            db = Database()
+            available_sources = db.get_available_sources()
+            
             logger.info(f"Generating HTML with environment: {ENVIRONMENT}")
             html_content = template.render(
                 items=items,
                 last_update_time=current_time,
                 environment=ENVIRONMENT,
-                feeds=FEEDS
+                feeds=FEEDS,
+                available_sources=available_sources
             )
             
             # Log the favicon path being used
@@ -49,12 +55,18 @@ class HTMLGenerator:
         try:
             template = self.lookup.get_template('news.mako')
             
+            # Get list of available sources from the database
+            from database.models import Database
+            db = Database()
+            available_sources = db.get_available_sources()
+            
             html_content = template.render(
                 items=items,
                 last_update_time=current_time,
                 environment=ENVIRONMENT,
                 feeds=FEEDS,
-                selected_source=selected_source
+                selected_source=selected_source,
+                available_sources=available_sources
             )
             
             return html_content
