@@ -85,6 +85,7 @@ def serve_news():
     try:
         # Check if source filter is applied
         source = request.args.get('source')
+        logger.info(f"Requested source filter: {source}")
         
         if source:
             # If a source is specified, get filtered items from DB and render dynamic template
@@ -95,7 +96,19 @@ def serve_news():
             current_time = datetime.now(tz).strftime('%d/%m %H:%M')
             
             # Use the HTML generator to render with filtered items
-            return html_generator.render_filtered(recent_items, current_time, source)
+            html_content = html_generator.render_filtered(
+                recent_items, 
+                current_time, 
+                source,
+                ga_measurement_id=os.getenv('GA_MEASUREMENT_ID', '')
+            )
+            
+            # Check if we got an error response
+            if isinstance(html_content, tuple) and len(html_content) == 2 and html_content[1] == 500:
+                logger.error(f"Error in filtered content: {html_content[0]}")
+                return html_content[0], 500
+                
+            return html_content
         
         # If no source filter, serve the static file
         if not os.path.exists(HTML_OUTPUT_FILE):

@@ -4,6 +4,7 @@ import logging
 import pytz
 from datetime import datetime
 from config.settings import TEMPLATE_DIR, HTML_OUTPUT_FILE, TIMEZONE, ENVIRONMENT, FEEDS
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +32,8 @@ class HTMLGenerator:
                 last_update_time=current_time,
                 environment=ENVIRONMENT,
                 feeds=FEEDS,
-                available_sources=available_sources
+                available_sources=available_sources,
+                ga_measurement_id=os.getenv('GA_MEASUREMENT_ID', '')
             )
             
             # Log the favicon path being used
@@ -50,7 +52,7 @@ class HTMLGenerator:
             logger.error(f"Error traceback: {traceback.format_exc()}")
             return False
             
-    def render_filtered(self, items, current_time, selected_source):
+    def render_filtered(self, items, current_time, selected_source, ga_measurement_id=''):
         """Render HTML directly for filtered news items"""
         try:
             template = self.lookup.get_template('news.mako')
@@ -66,7 +68,8 @@ class HTMLGenerator:
                 environment=ENVIRONMENT,
                 feeds=FEEDS,
                 selected_source=selected_source,
-                available_sources=available_sources
+                available_sources=available_sources,
+                ga_measurement_id=ga_measurement_id
             )
             
             return html_content
@@ -75,4 +78,4 @@ class HTMLGenerator:
             logger.error(f"Error type: {type(e).__name__}")
             import traceback
             logger.error(f"Error traceback: {traceback.format_exc()}")
-            return "Error generating filtered content", 500 
+            return f"Error generating filtered content: {str(e)}", 500 
