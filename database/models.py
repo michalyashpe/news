@@ -99,6 +99,28 @@ class Database:
             LIMIT ?
         ''', (limit,)).fetchall()
 
+    def get_filtered_items(self, source, limit=500):
+        """Get news items filtered by source"""
+        conn = self._get_connection()
+        cursor = conn.cursor()
+        return cursor.execute('''
+            SELECT *, datetime(pub_date) as formatted_date 
+            FROM news_items 
+            WHERE source = ? 
+            ORDER BY pub_date DESC 
+            LIMIT ?
+        ''', (source, limit)).fetchall()
+
+    def get_available_sources(self):
+        """Get a list of all sources that have items in the database"""
+        conn = self._get_connection()
+        cursor = conn.cursor()
+        return [row[0] for row in cursor.execute('''
+            SELECT DISTINCT source
+            FROM news_items
+            ORDER BY source
+        ''').fetchall()]
+
     def close(self):
         """Close database connection for the current thread"""
         if hasattr(self._local, 'conn'):

@@ -112,6 +112,51 @@
         a:hover {
             text-decoration: underline;
         }
+        
+        /* Filter styles */
+        .filter-container {
+            text-align: center;
+            margin: 0 0 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .source-filter {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin: 0 4px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #444;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .source-filter:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+            text-decoration: none;
+        }
+        .source-filter.active {
+            background: #555555;
+            border-color: #444444;
+            font-weight: bold;
+            color: white;
+        }
+        .source-filter.all {
+            background: #f0f0f0;
+            border-color: #ccc;
+        }
+        .source-filter.all.active {
+            background: #555555;
+            border-color: #444444;
+            color: white;
+        }
 
         /* Mobile styles */
         @media (max-width: 768px) {
@@ -131,6 +176,14 @@
             p {
                 font-size: 0.9rem;
             }
+            .filter-container {
+                margin: 0 0 15px 0;
+            }
+            .source-filter {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+                margin: 0 2px;
+            }
         }
 
         /* Small mobile devices */
@@ -147,6 +200,16 @@
             p {
                 font-size: 0.85rem;
             }
+            .filter-container {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .source-filter {
+                font-size: 0.8rem;
+                padding: 5px 8px;
+                margin: 2px;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
@@ -158,6 +221,14 @@
         </span>
         <span class="title">רק כותרות</span>
     </h1>
+    
+    <div class="filter-container">
+        <a href="/" class="source-filter all ${'' if selected_source else 'active'}">הכל</a>
+        % for source in feeds.keys():
+            <a href="/?source=${source}" class="source-filter ${('active' if source == selected_source else '')}">${source}</a>
+        % endfor
+    </div>
+    
     % for item in items:
     <div class="item">
         <a href="${item[2]}" target="_blank" class="headline-link">
